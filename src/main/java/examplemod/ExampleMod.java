@@ -37,6 +37,7 @@ public class ExampleMod {
         ItemRegistry.registerItem("examplesword", new ExampleSwordItem(), 20, true);
         ItemRegistry.registerItem("examplestaff", new ExampleProjectileWeapon(), 30, true);
         ItemRegistry.registerItem("examplepotionitem", new ExamplePotionItem(), 10, true);
+
         ItemRegistry.registerItem("examplefooditem", new ExampleFoodItem(),15, true);
 
         // Register our mob
