@@ -32,6 +32,10 @@ public class ExampleIncursionLevel extends IncursionLevel {
         super(identifier, width, height, worldEntity);
         this.baseBiome = BiomeRegistry.getBiome("exampleincursion");
         this.isCave = true;
+
+        // Define shard rock IDs so perk-based generation knows what to place
+        this.upgradeShardsRockID = "upgradesharddeeprock";
+        this.alchemyShardsRockID = "alchemysharddeeprock";
     }
 
     /**
@@ -39,7 +43,7 @@ public class ExampleIncursionLevel extends IncursionLevel {
      * Creates a fixed-size level and immediately generates its contents.
      */
     public ExampleIncursionLevel(LevelIdentifier identifier, BiomeMissionIncursionData incursionData, WorldEntity worldEntity, AltarData altarData) {
-        super(identifier, 150, 150, incursionData, worldEntity);
+        super(identifier, 100, 100, incursionData, worldEntity);
         this.baseBiome = BiomeRegistry.getBiome("exampleincursion");
         this.isCave = true;
         generateLevel(incursionData, altarData);
@@ -63,7 +67,7 @@ public class ExampleIncursionLevel extends IncursionLevel {
         // Used to reserve space so later generation steps avoid overwriting the entrance
         PresetGeneration entranceAndPerkPresets = new PresetGeneration(this);
 
-        // Generate a incursion entrance that clears terrain,
+        // Generate a vanilla-style incursion entrance that clears terrain,
         // blends edges, reserves space, and places the return portal
         IncursionBiome.generateEntrance(
                 this,
@@ -80,6 +84,13 @@ public class ExampleIncursionLevel extends IncursionLevel {
         if (incursionData instanceof BiomeExtractionIncursionData) {
             cg.generateGuaranteedOreVeins(40, 4, 8, ObjectRegistry.getObjectID("tungstenoredeeprock"));
         }
+
+        // Always generate upgrade and alchemy shard veins for progression
+        cg.generateGuaranteedOreVeins(75, 6, 12, ObjectRegistry.getObjectID("upgradesharddeeprock"));
+        cg.generateGuaranteedOreVeins(75, 6, 12, ObjectRegistry.getObjectID("alchemysharddeeprock"));
+
+        // Allow altar perks to inject additional ore or content generation
+        generateOresBasedOnPerks(altarData, cg, this, this.baseBiome, cg.random);
 
         // Notify listeners that cave ore generation has completed
         GameEvents.triggerEvent((GameEvent) new GeneratedCaveOresEvent((Level) this, cg));
