@@ -52,7 +52,7 @@ public class ExampleIncursionLevel extends IncursionLevel {
     public void generateLevel(BiomeMissionIncursionData incursionData, AltarData altarData) {
 
         // Create the cave generator using deep rock tiles for floors and walls
-        CaveGeneration cg = new CaveGeneration(this, "deeprocktile", "deeprock");
+        CaveGeneration cg = new CaveGeneration(this, "deeprocktile", "examplebaserock");
 
         // Seed the generator so this incursion layout is deterministic per mission
         cg.random.setSeed(incursionData.getUniqueID());
@@ -82,8 +82,9 @@ public class ExampleIncursionLevel extends IncursionLevel {
 
         // For extraction incursions, guarantee tungsten ore veins for objectives
         if (incursionData instanceof BiomeExtractionIncursionData) {
-            cg.generateGuaranteedOreVeins(40, 4, 8, ObjectRegistry.getObjectID("tungstenoredeeprock"));
+            cg.generateGuaranteedOreVeins(40, 4, 8, ObjectRegistry.getObjectID("exampleorerock"));
         }
+
 
         // Always generate upgrade and alchemy shard veins for progression
         cg.generateGuaranteedOreVeins(75, 6, 12, ObjectRegistry.getObjectID("upgradesharddeeprock"));

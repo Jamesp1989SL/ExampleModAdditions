@@ -28,13 +28,13 @@ public class ExampleIncursionBiome extends IncursionBiome {
 
     // String ID passed to the IncursionBiome base class
     public ExampleIncursionBiome() {
-        super("reaper");
+        super("examplebossmob");
     }
 
     // Items required to be obtained when completing an extraction objective in this incursion
     @Override
     public Collection<Item> getExtractionItems(IncursionData data) {
-        return Collections.singleton(ItemRegistry.getItem("tungstenore"));
+        return Collections.singleton(ItemRegistry.getItem("exampleore"));
     }
 
     /**

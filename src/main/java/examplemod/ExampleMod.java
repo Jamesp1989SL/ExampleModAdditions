@@ -2,6 +2,7 @@ package examplemod;
 
 
 import examplemod.examples.*;
+import examplemod.examples.mobs.ExampleMob;
 import necesse.engine.commands.CommandsManager;
 import necesse.engine.modLoader.annotations.ModEntry;
 import necesse.engine.registries.*;
@@ -11,6 +12,8 @@ import necesse.inventory.recipe.Recipe;
 import necesse.inventory.recipe.Recipes;
 import necesse.level.maps.biomes.Biome;
 import examplemod.examples.items.*;
+import examplemod.examples.mobs.*;
+import examplemod.examples.Objects.*;
 
 @ModEntry
 public class ExampleMod {
@@ -28,11 +31,19 @@ public class ExampleMod {
         // Register our tiles
         TileRegistry.registerTile("exampletile", new ExampleTile(), 1, true);
 
-        // Register out objects
+        // Register our objects
         ObjectRegistry.registerObject("exampleobject", new ExampleObject(), 2, true);
+
+        // Register a mod-owned deep rock for the example incursion to use as cave walls
+        ExampleBaseRockObject exampleBaseRock = new ExampleBaseRockObject();
+        ObjectRegistry.registerObject(ExampleBaseRockObject.ID, exampleBaseRock, -1.0F, true);
+
+        // Register an ore rock that overlays onto our incursion rock
+        ObjectRegistry.registerObject(ExampleOreRockObject.ID, new ExampleOreRockObject(exampleBaseRock), -1.0F, true);
 
         // Register our items
         ItemRegistry.registerItem("exampleitem", new ExampleMaterialItem(), 10, true);
+        ItemRegistry.registerItem(ExampleOreItem.ID, new ExampleOreItem(), 25, true);
         ItemRegistry.registerItem("examplehuntincursionitem", new ExampleHuntIncursionMaterialItem(), 50, true);
         ItemRegistry.registerItem("examplesword", new ExampleSwordItem(), 20, true);
         ItemRegistry.registerItem("examplestaff", new ExampleProjectileWeapon(), 30, true);
@@ -42,6 +53,9 @@ public class ExampleMod {
 
         // Register our mob
         MobRegistry.registerMob("examplemob", ExampleMob.class, true);
+
+        // Register boss mob
+        MobRegistry.registerMob("examplebossmob",ExampleBossMob.class,true,true);
 
         // Register our projectile
         ProjectileRegistry.registerProjectile("exampleprojectile", ExampleProjectile.class, "exampleprojectile", "exampleprojectile_shadow");
@@ -61,6 +75,8 @@ public class ExampleMod {
         // It will process your textures and save them again with a fixed alpha edge color
 
         ExampleMob.texture = GameTexture.fromFile("mobs/examplemob");
+
+        ExampleBossMob.texture = GameTexture.fromFile("mobs/examplebossmob");
     }
 
     public void postInit() {

@@ -1,13 +1,19 @@
-package examplemod.examples;
+package examplemod.examples.mobs;
 
+import examplemod.examples.ExampleAI;
+import necesse.engine.eventStatusBars.EventStatusBarManager;
 import necesse.engine.gameLoop.tickManager.TickManager;
+import necesse.engine.registries.MusicRegistry;
+import necesse.engine.sound.SoundManager;
 import necesse.engine.util.GameRandom;
 import necesse.entity.mobs.GameDamage;
+import necesse.entity.mobs.Mob;
 import necesse.entity.mobs.MobDrawable;
 import necesse.entity.mobs.PlayerMob;
 import necesse.entity.mobs.ai.behaviourTree.BehaviourTreeAI;
 import necesse.entity.mobs.ai.behaviourTree.trees.CollisionPlayerChaserWandererAI;
 import necesse.entity.mobs.hostile.HostileMob;
+import necesse.entity.mobs.hostile.bosses.BossMob;
 import necesse.entity.particle.FleshParticle;
 import necesse.entity.particle.Particle;
 import necesse.gfx.camera.GameCamera;
@@ -22,7 +28,7 @@ import necesse.level.maps.light.GameLight;
 import java.awt.*;
 import java.util.List;
 
-public class ExampleMob extends HostileMob {
+public class ExampleBossMob extends BossMob {
 
     // Loaded in examplemod.ExampleMod.initResources()
     public static GameTexture texture;
@@ -32,11 +38,13 @@ public class ExampleMob extends HostileMob {
     );
 
     // MUST HAVE an empty constructor
-    public ExampleMob() {
+    public ExampleBossMob() {
         super(200);
         setSpeed(50);
         setFriction(3);
-
+        this.shouldSave = false;
+        this.canDespawn = true;
+        this.isSummoned = true;
         // Hitbox, collision box, and select box (for hovering)
         collision = new Rectangle(-10, -7, 20, 14);
         hitBox = new Rectangle(-14, -12, 28, 24);
@@ -47,7 +55,15 @@ public class ExampleMob extends HostileMob {
     public void init() {
         super.init();
         // Setup AI
-        ai = new BehaviourTreeAI<>(this, new CollisionPlayerChaserWandererAI<>(null, 12 * 32, new GameDamage(25), 25, 40000));
+        this.ai = new BehaviourTreeAI<>(
+                this,
+                new ExampleAI<>(
+                        1380,  // search distance (in pixels)
+                        new GameDamage(60), // collide damage
+                        150,                // knockback
+                        12000               // wander frequency
+                )
+        );
     }
 
     @Override
@@ -103,6 +119,18 @@ public class ExampleMob extends HostileMob {
     public int getRockSpeed() {
         // Change the speed at which this mobs animation plays
         return 20;
+    }
+
+    @Override
+    public void clientTick() {
+        super.clientTick();
+
+        // Only show boss bar when the client player is close enough
+        if (isClientPlayerNearby()) {
+            EventStatusBarManager.registerMobHealthStatusBar(this);
+        }
+        // Optional: set boss music here too if you want
+        SoundManager.setMusic(MusicRegistry.AscendedReturn, SoundManager.MusicPriority.EVENT, 1.5F);
     }
 
 
