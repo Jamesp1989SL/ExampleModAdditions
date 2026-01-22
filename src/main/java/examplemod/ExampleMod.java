@@ -5,6 +5,7 @@ import examplemod.examples.items.ExampleFoodItem;
 import examplemod.examples.items.ExampleHuntIncursionMaterialItem;
 import examplemod.examples.items.ExampleMaterialItem;
 import examplemod.examples.items.ExamplePotionItem;
+import examplemod.examples.themes.ThemeInit;
 import necesse.engine.commands.CommandsManager;
 import necesse.engine.modLoader.annotations.ModEntry;
 import necesse.engine.registries.*;
@@ -120,6 +121,7 @@ public class ExampleMod {
                 .add(100, "examplemob");
 
         // Register our server chat command
+        ThemeInit.registerAll();
         CommandsManager.registerServerCommand(new ExampleChatCommand());
     }
 
