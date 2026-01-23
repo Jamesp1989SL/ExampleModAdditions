@@ -14,7 +14,6 @@ import necesse.engine.commands.ModularChatCommand;
 import necesse.engine.commands.PermissionLevel;
 import necesse.engine.commands.parameterHandlers.IntParameterHandler;
 import necesse.engine.commands.parameterHandlers.StringParameterHandler;
-import necesse.engine.network.Packet;
 import necesse.engine.network.packet.PacketRegionData;
 import necesse.engine.network.server.Server;
 import necesse.engine.network.server.ServerClient;
@@ -112,6 +111,11 @@ public class ThemeCommand extends ModularChatCommand {
         BiomeTheme theme = BiomeThemeRegistry.get(biomeStringID);
         if (theme == null) {
             logs.add("No theme registered for '" + biomeStringID + "'. (It will only change biome overlay.)");
+        } else {
+            if (!theme.isUsable()) {
+                logs.add(theme.getDisabledMessage());
+                return;
+            }
         }
 
         int cx = serverClient.playerMob.getTileX();
@@ -130,7 +134,7 @@ public class ThemeCommand extends ModularChatCommand {
         int endRegionY   = level.regionManager.getRegionCoordByTile(endY);
 
         final int regionSize = 16;
-        Random random = new GameRandom(level.getIdentifier().hashCode() ^ (cx * 73856093) ^ (cy * 19349663));
+        Random random = new GameRandom(level.getIdentifier().hashCode() ^ (cx * 73856093L) ^ (cy * 19349663L));
 
         GameObject air = ObjectRegistry.getObject("air");
         TicketSystemList<GameObject> tickets = (theme != null) ? theme.createObjectTickets(level) : null;
@@ -225,7 +229,7 @@ public class ThemeCommand extends ModularChatCommand {
                 if (clientsWithRegion.length > 0) {
                     PacketRegionData packet = new PacketRegionData(region);
                     for (ServerClient c : clientsWithRegion) {
-                        c.sendPacket((Packet) packet);
+                        c.sendPacket(packet);
                     }
                 }
 

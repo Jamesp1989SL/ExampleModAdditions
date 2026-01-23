@@ -6,11 +6,6 @@ import necesse.engine.util.TicketSystemList;
 import necesse.level.gameObject.GameObject;
 import necesse.level.maps.Level;
 
-/**
- * A small "theme recipe" used by /theme to repaint an area.
- * Note: Necesse does not expose a universal API for "what belongs in a biome",
- * so each theme mirrors the relevant generator logic (tiles + object pools).
- */
 public interface BiomeTheme {
     /** Biome string id (e.g. "graveyard", "forestdeepcave"). */
     String getBiomeStringID();
@@ -31,5 +26,15 @@ public interface BiomeTheme {
 
     /** Optional decorator pass after object placement (grass patches etc.). */
     default void decorate(Level level, int tileX, int tileY, Random random) {
+    }
+
+    /** If false, /theme should refuse to run this theme and show getDisabledMessage(). */
+    default boolean isUsable() {
+        return true;
+    }
+
+    /** Message shown when isUsable() is false. */
+    default String getDisabledMessage() {
+        return "This theme is not usable.";
     }
 }

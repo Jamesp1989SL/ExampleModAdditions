@@ -6,7 +6,6 @@ import necesse.engine.registries.ObjectRegistry;
 import necesse.engine.util.TicketSystemList;
 import necesse.level.gameObject.GameObject;
 import necesse.level.maps.Level;
-import necesse.engine.registries.TileRegistry;
 
 import examplemod.examples.themes.BiomeTheme;
 
@@ -18,9 +17,16 @@ public class UnknownTheme extends ThemeBase implements BiomeTheme {
     }
 
     @Override
-    public void paintTile(Level level, int tileX, int tileY, Random random) {
-// Intentionally do nothing (only biome overlay will change)
+    public boolean isUsable() {
+        return false;
+    }
 
+    @Override
+    public String getDisabledMessage() {
+        return "Unknown is a fallback biome for when biome data is missing. usually when a mod is removed. Theme conversion is disabled for it.";
+    }
+    @Override
+    public void paintTile(Level level, int tileX, int tileY, Random random) {
     }
 
     @Override
