@@ -1,11 +1,10 @@
-package themer;
+package colourRGB;
 
-import themer.themes.ThemeInit;
 import necesse.engine.modLoader.annotations.ModEntry;
 
 
 @ModEntry
-public class Themer {
+public class ColourRGB {
 
     public void init() {
     }
@@ -15,6 +14,5 @@ public class Themer {
 
     public void postInit() {
 
-        ThemeInit.registerAll();
     }
 }
