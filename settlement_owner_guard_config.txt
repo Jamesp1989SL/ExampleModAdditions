@@ -1,5 +1,0 @@
-# SettlementGuard OwnerGuard
-enabled=true
-check_every_ticks=40
-log_restores=true
-save_every_seconds=60

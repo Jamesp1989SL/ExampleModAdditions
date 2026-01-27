@@ -1,8 +1,0 @@
-# XpMod config
-# XP vrednosti po akciji.
-XP_PER_TREE=1
-XP_PER_ORE=1
-XP_PER_FRIENDLY_KILL=1
-XP_PER_HOSTILE_KILL=2
-XP_PER_FISH=1
-XP_PER_BUILD=1

@@ -1,5 +1,0 @@
-# Broadcast Config
-interval=300
-random=false
-msg=Welcome to the server!
-msg=Join Discord for updates.

@@ -1,5 +1,0 @@
-# Banner of War settings
-# 1.0 = vanilla, 0.0 = disabled
-
-BANNER_SPAWN_RATE=0.0
-BANNER_SPAWN_CAP=0.0

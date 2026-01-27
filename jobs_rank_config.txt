@@ -1,7 +1,0 @@
-# job=<JOB>;rank1=<coins>;rank2=<coins>;rank3=<coins>;rank4=<coins>;rank5=<coins>
-job=WOODCUTTER;rank1=1;rank2=10;rank3=25;rank4=50;rank5=83
-job=MINER;rank1=1;rank2=10;rank3=25;rank4=50;rank5=83
-job=HUNTER;rank1=1;rank2=10;rank3=25;rank4=50;rank5=83
-job=SLAYER;rank1=1;rank2=10;rank3=25;rank4=50;rank5=83
-job=FISHER;rank1=1;rank2=10;rank3=25;rank4=50;rank5=83
-job=BUILDER;rank1=1;rank2=25;rank3=60;rank4=120;rank5=200

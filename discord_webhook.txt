@@ -1,7 +1,0 @@
-# Discord Chat Bridge Config
-# Server -> Discord ONLY
-#
-# WEBHOOK_URL uzimas u Discord kanalu: Edit Channel -> Integrations -> Webhooks -> Copy Webhook URL
-
-WEBHOOK_URL=
-PREFIX=[EternalWorld]
