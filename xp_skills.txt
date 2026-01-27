@@ -1,0 +1,2 @@
+# name;hp;mana;speed;crit;damage;armor;resilience
+mod dev;0;0;0;0;0;0;0

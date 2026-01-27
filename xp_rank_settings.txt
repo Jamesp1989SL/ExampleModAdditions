@@ -1,0 +1,22 @@
+# RankName=XP (sorted by XP automatically)
+# Add more lines to add more ranks.
+
+Novice=1000
+Apprentice=2000
+Adept=3000
+Skilled=4000
+Expert=5000
+Elite=6000
+Veteran=7000
+Champion=8000
+Guardian=9000
+Warden=10000
+Master=12000
+Grandmaster=14000
+Mythic=16000
+Eternal=18000
+Celestial=20000
+Apex=30000
+Paragon=50000
+Legendary=150000
+Ascendant=300000

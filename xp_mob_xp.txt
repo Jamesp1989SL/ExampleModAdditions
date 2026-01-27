@@ -1,0 +1,33 @@
+# Eternal RPG - XP per mob override
+#
+# If a line matches, it OVERRIDES the base XP from xp_config.
+#
+# Format:
+#   mob=<stringID>;xp=<number>
+#   action=<HOSTILE_KILL|FRIENDLY_KILL>;mob=<stringID>;xp=<number>
+#
+# Boss presets (stringID format, lowercase, no special chars):
+# NOTE: edit XP numbers as you want.
+
+action=HOSTILE_KILL;mob=evilsprotector;xp=160
+action=HOSTILE_KILL;mob=queenspider;xp=120
+action=HOSTILE_KILL;mob=voidwizard;xp=140
+action=HOSTILE_KILL;mob=chieftain;xp=160
+action=HOSTILE_KILL;mob=swampguardian;xp=180
+action=HOSTILE_KILL;mob=ancientvulture;xp=200
+action=HOSTILE_KILL;mob=piratecaptain;xp=250
+action=HOSTILE_KILL;mob=reaper;xp=300
+action=HOSTILE_KILL;mob=cryoqueen;xp=320
+action=HOSTILE_KILL;mob=thecursedcrone;xp=340
+action=HOSTILE_KILL;mob=pestwarden;xp=360
+action=HOSTILE_KILL;mob=sage;xp=220
+action=HOSTILE_KILL;mob=grit;xp=220
+action=HOSTILE_KILL;mob=fallenwizard;xp=500
+action=HOSTILE_KILL;mob=motherslime;xp=550
+action=HOSTILE_KILL;mob=nightswarm;xp=600
+action=HOSTILE_KILL;mob=spiderempress;xp=650
+action=HOSTILE_KILL;mob=sunlightchampion;xp=750
+action=HOSTILE_KILL;mob=moonlightdancer;xp=800
+action=HOSTILE_KILL;mob=crystaldragon;xp=900
+action=HOSTILE_KILL;mob=thevoid;xp=1000
+action=HOSTILE_KILL;mob=ascendedwizard;xp=1200

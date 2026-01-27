@@ -3,14 +3,21 @@ exampletile=Example Tile
 
 [object]
 exampleobject=Example Object
+examplebaserock=Example Rock
+exampleore=Example Ore
+examplewall=Example Wall
+exampledoor=Example Door
 
 [item]
 exampleitem=Example Item
-examplehuntincursionitem=Example Hunt Incursion Item
-examplepotionitem=Example Potion
+examplestone=Example Stone
+exampleore=Example Ore
+examplebar=Example Bar
+examplehuntincursionmaterial=Example Hunt Incursion Material
+examplepotion=Example Potion
 examplesword=Example Sword
 examplestaff=Example Staff
-examplefooditem=Example Food
+examplefood=Example Food
 
 [itemtooltip]
 examplestafftip=Shoots a homing, piercing projectile
@@ -18,6 +25,7 @@ examplepotionitemtip= An example potion
 
 [mob]
 examplemob=Example Mob
+examplebossmob=Example Boss
 
 [buff]
 examplebuff=Example Buff

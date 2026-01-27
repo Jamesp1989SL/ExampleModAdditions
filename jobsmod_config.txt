@@ -1,0 +1,16 @@
+# Eternal RPG - Jobs config
+# koliko akcija treba za 1 job point (coin step)
+TREES_PER_COIN=1
+ORES_PER_COIN=1
+FRIENDLY_PER_COIN=1
+HOSTILE_PER_COIN=1
+FISH_PER_COIN=1
+BUILDS_PER_COIN=1
+
+# koliko coins se daje kad se ispuni kvota
+COINS_FOR_TREES=1
+COINS_FOR_ORES=1
+COINS_FOR_FRIENDLY=1
+COINS_FOR_HOSTILE=1
+COINS_FOR_FISH=1
+COINS_FOR_BUILDS=1
