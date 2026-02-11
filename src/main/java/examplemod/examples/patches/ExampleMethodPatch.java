@@ -1,4 +1,4 @@
-package examplemod.examples;
+package examplemod.examples.patches;
 
 import necesse.engine.modLoader.annotations.ModMethodPatch;
 import necesse.inventory.lootTable.LootTable;

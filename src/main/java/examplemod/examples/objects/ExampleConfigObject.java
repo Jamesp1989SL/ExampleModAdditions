@@ -1,9 +1,9 @@
 package examplemod.examples.objects;
 
-import examplemod.examples.objectentity.ExampleObjectEntity;
+import examplemod.ExampleMod;
+import examplemod.examples.packets.ExampleConfigInteractPacket;
 import necesse.engine.gameLoop.tickManager.TickManager;
 import necesse.entity.mobs.PlayerMob;
-import necesse.entity.objectEntity.ObjectEntity;
 import necesse.gfx.camera.GameCamera;
 import necesse.gfx.drawOptions.texture.TextureDrawOptionsEnd;
 import necesse.gfx.drawables.LevelSortedDrawable;
@@ -16,21 +16,13 @@ import necesse.level.maps.light.GameLight;
 import java.awt.Rectangle;
 import java.util.List;
 
-/*
- * Basic placeable demo object that:
- * - draws a 32x32 sprite in the world
- * - on interact (server side), spawns our ExampleLevelEvent
- * - also triggers our custom ExampleEvent through GameEvents (so listeners can react)
- */
-public class ExampleLevelEventObject extends GameObject {
-
+public class ExampleConfigObject extends GameObject {
     // Loaded once from mod resources in loadTextures()
     private GameTexture texture;
 
-    public ExampleLevelEventObject() {
-        //no physics shape
-        super(new Rectangle());
-        this.isSolid = false;
+    public ExampleConfigObject() {
+        super(new Rectangle(32, 32));
+        this.isSolid = true;
     }
 
     @Override
@@ -39,7 +31,7 @@ public class ExampleLevelEventObject extends GameObject {
 
         // Loads: src/main/resources/objects/exampleleveleventobject.png
         // (no ".png" in the string)
-        this.texture = GameTexture.fromFile("objects/exampleleveleventobject");
+        this.texture = GameTexture.fromFile("objects/exampleconfigobject");
     }
 
     @Override
@@ -61,10 +53,9 @@ public class ExampleLevelEventObject extends GameObject {
                 .pos(drawX, drawY);
 
         /*
-        */
+         */
         tileList.add(tm -> opts.draw());
     }
-
 
     @Override
     public void drawPreview(Level level, int tileX, int tileY, int rotation, float alpha,
@@ -83,7 +74,14 @@ public class ExampleLevelEventObject extends GameObject {
     }
 
     @Override
-    public ObjectEntity getNewObjectEntity(Level level, int x, int y) {
-        return new ExampleObjectEntity(level, x, y);
+    public boolean canInteract(Level level, int x, int y, PlayerMob player) {
+        return true;
+    }
+
+    @Override
+    public void interact(Level level, int x, int y, PlayerMob player) {
+        if (level.isClient() && level.getClient() != null) {
+            level.getClient().network.sendPacket(new ExampleConfigInteractPacket(x, y));
+        }
     }
 }

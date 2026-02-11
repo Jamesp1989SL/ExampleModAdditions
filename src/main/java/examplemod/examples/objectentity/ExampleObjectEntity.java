@@ -1,4 +1,4 @@
-package examplemod.examples;
+package examplemod.examples.objectentity;
 
 import examplemod.examples.events.ExampleEvent;
 import examplemod.examples.events.ExampleLevelEvent;

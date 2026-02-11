@@ -41,5 +41,11 @@ public class ExampleModObjects {
         // Register an object which uses a level event
         ObjectRegistry.registerObject("exampleleveleventobject", new ExampleLevelEventObject(),1,true);
 
+        // Register ExampleJobObject an object that triggers our new job to happen //DEBUG
+        ObjectRegistry.registerObject("examplejobobject",new ExampleJobObject(),1,true);
+
+        // Register an object that uses the mods config file
+        ObjectRegistry.registerObject("exampleconfigobject", new ExampleConfigObject(),1,true);
+
     }
 }

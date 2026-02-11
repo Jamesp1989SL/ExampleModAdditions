@@ -1,5 +1,6 @@
-package examplemod.examples;
+package examplemod.examples.presets;
 
+import examplemod.examples.ExampleLootTable;
 import necesse.engine.util.GameRandom;
 import necesse.level.maps.presets.Preset;
 

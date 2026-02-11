@@ -5,7 +5,7 @@ import necesse.inventory.item.placeableItem.tileItem.GrassSeedItem;
 /**
  * A seed item that turns dirt into our custom grass tile when placed.
  *
- * Vanilla uses GrassSeedItem for grass seeds. It handles:
+ *   uses GrassSeedItem for grass seeds. It handles:
  *   Only placing on dirt
  *   Tile placement + preview
  *   Consuming the item (unless in god mode)

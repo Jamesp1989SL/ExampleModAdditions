@@ -8,5 +8,6 @@ public class ExampleModCommands {
 
         // Register our server chat command
         CommandsManager.registerServerCommand(new ExampleChatCommand());
+
     }
 }

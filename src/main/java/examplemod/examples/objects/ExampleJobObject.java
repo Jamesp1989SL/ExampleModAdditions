@@ -1,6 +1,9 @@
 package examplemod.examples.objects;
 
-import examplemod.examples.objectentity.ExampleObjectEntity;
+import java.awt.Rectangle;
+import java.util.List;
+
+import examplemod.examples.objectentity.ExampleJobObjectEntity;
 import necesse.engine.gameLoop.tickManager.TickManager;
 import necesse.entity.mobs.PlayerMob;
 import necesse.entity.objectEntity.ObjectEntity;
@@ -13,33 +16,22 @@ import necesse.level.gameObject.GameObject;
 import necesse.level.maps.Level;
 import necesse.level.maps.light.GameLight;
 
-import java.awt.Rectangle;
-import java.util.List;
-
-/*
- * Basic placeable demo object that:
- * - draws a 32x32 sprite in the world
- * - on interact (server side), spawns our ExampleLevelEvent
- * - also triggers our custom ExampleEvent through GameEvents (so listeners can react)
- */
-public class ExampleLevelEventObject extends GameObject {
-
+public class ExampleJobObject extends GameObject {
     // Loaded once from mod resources in loadTextures()
     private GameTexture texture;
 
-    public ExampleLevelEventObject() {
-        //no physics shape
-        super(new Rectangle());
-        this.isSolid = false;
+    public ExampleJobObject() {
+        super(new Rectangle(32, 32));
+        this.isSolid = true;
+        this.mapColor = new java.awt.Color(120, 170, 120);
     }
-
     @Override
     public void loadTextures() {
         super.loadTextures();
 
         // Loads: src/main/resources/objects/exampleleveleventobject.png
         // (no ".png" in the string)
-        this.texture = GameTexture.fromFile("objects/exampleleveleventobject");
+        this.texture = GameTexture.fromFile("objects/examplejobobject");
     }
 
     @Override
@@ -61,10 +53,9 @@ public class ExampleLevelEventObject extends GameObject {
                 .pos(drawX, drawY);
 
         /*
-        */
+         */
         tileList.add(tm -> opts.draw());
     }
-
 
     @Override
     public void drawPreview(Level level, int tileX, int tileY, int rotation, float alpha,
@@ -81,9 +72,8 @@ public class ExampleLevelEventObject extends GameObject {
                 .alpha(alpha)
                 .draw(drawX, drawY);
     }
-
     @Override
     public ObjectEntity getNewObjectEntity(Level level, int x, int y) {
-        return new ExampleObjectEntity(level, x, y);
+        return new ExampleJobObjectEntity(level, x, y);
     }
 }

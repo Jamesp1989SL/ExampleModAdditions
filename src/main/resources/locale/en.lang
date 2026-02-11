@@ -14,6 +14,8 @@ examplewall=Example Wall
 exampledoor=Example Door
 examplechair=Example Chair
 exampleleveleventobject=Example Level Event Object
+examplejobobject=Example Job Object
+exampleconfigobject=Example Config Object
 
 [item]
 exampleitem=Example Item
@@ -43,6 +45,8 @@ examplepotionitemtip= An example potion
 examplemob=Example Mob
 examplebossmob=Example Boss
 examplesummonmob=Example Summon Mob
+examplesettlermob=Example Settler
+examplesettlermobname=<name> The Example Settler
 
 [buff]
 examplebuff=Example Buff
@@ -58,3 +62,14 @@ exampleincursion=Example Incursion
 examplemodrootcat=ExampleMod
 examplemodobjectsubcat=ExampleMod Objects
 examplemodfurnaturesubcat=ExampleMod Furnature
+
+[jobs]
+weedingname=Weeding
+weedingtip=Keeps grass cleared in assigned zones.
+
+[ui]
+examplejobzone=Example Job Zone
+examplejobzonedefname=Weeding Zone {number}
+
+[activities]
+examplejob=Weeding {target}

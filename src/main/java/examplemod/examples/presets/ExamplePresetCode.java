@@ -1,5 +1,6 @@
-package examplemod.examples;
+package examplemod.examples.presets;
 
+import examplemod.examples.ExampleLootTable;
 import necesse.engine.registries.ObjectRegistry;
 import necesse.engine.registries.TileRegistry;
 import necesse.engine.util.GameRandom;
