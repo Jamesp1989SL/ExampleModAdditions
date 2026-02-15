@@ -10,7 +10,7 @@ import necesse.entity.mobs.job.JobTypeHandler;
 import net.bytebuddy.asm.Advice;
 
 @ModMethodPatch(target = JobFinder.class, name = "streamFoundJobs", arguments = {})
-public class JobFinderStreamFoundJobslHandlersPatch {
+public class JobFinderStreamFoundJobsHandlersPatch {
 
     @Advice.OnMethodEnter(skipOn = Advice.OnNonDefaultValue.class)
     static boolean onEnter(

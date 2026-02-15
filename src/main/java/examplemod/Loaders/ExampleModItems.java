@@ -4,6 +4,7 @@ import examplemod.examples.items.ammo.ExampleArrowItem;
 import examplemod.examples.items.armor.ExampleBootsArmorItem;
 import examplemod.examples.items.armor.ExampleChestArmorItem;
 import examplemod.examples.items.armor.ExampleHelmetArmorItem;
+import examplemod.examples.items.consumable.ExampleBossSummonItem;
 import examplemod.examples.items.consumable.ExampleFoodItem;
 import examplemod.examples.items.consumable.ExamplePotionItem;
 import examplemod.examples.items.materials.*;
@@ -39,6 +40,7 @@ public class ExampleModItems {
         // Consumables
         ItemRegistry.registerItem("examplepotion", new ExamplePotionItem(), 10, true);
         ItemRegistry.registerItem("examplefood", new ExampleFoodItem(), 15, true);
+        ItemRegistry.registerItem("examplebosssummonitem", new ExampleBossSummonItem(),1,true);
 
         // Ammo
         ItemRegistry.registerItem("examplearrow", new ExampleArrowItem(),5,true);

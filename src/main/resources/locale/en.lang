@@ -4,7 +4,6 @@ examplegrasstile=Example Grass Tile
 
 [object]
 exampleobject=Example Object
-exampleobject2 = Example Object Mod Category
 examplebaserock=Example Rock
 exampleore=Example Ore
 examplesapling=Example Sapling
@@ -16,6 +15,8 @@ examplechair=Example Chair
 exampleleveleventobject=Example Level Event Object
 examplejobobject=Example Job Object
 exampleconfigobject=Example Config Object
+examplepressureplateobject=Example Pressure Plate
+examplewalltrap=Example Wall Trap
 
 [item]
 exampleitem=Example Item
@@ -35,11 +36,13 @@ examplearrow=Example Arrow
 examplehelmet=Example Helmet
 examplechestplate=Example Chestplate
 exampleboots=Example Boots
+examplebosssummonitem= Example Boss Summon Item
 
 
 [itemtooltip]
 examplemagicstafftip=Shoots a homing, piercing projectile
 examplepotionitemtip= An example potion
+examplebosssummontip= Use in the Example Biome Cave to summon the Example Boss Mob
 
 [mob]
 examplemob=Example Mob
@@ -72,4 +75,10 @@ examplejobzone=Example Job Zone
 examplejobzonedefname=Weeding Zone {number}
 
 [activities]
-examplejob=Weeding {target}
+examplejob=Weeding
+
+[journal]
+examplebiomesurface=Example Biome Surface
+examplebiomecave=Example Biome Cave
+examplebiomedeepcave=Example Biome Deep Cave
+

@@ -9,15 +9,14 @@ import necesse.entity.mobs.ai.behaviourTree.trees.CollisionPlayerChaserAI;
 
 public class ExampleAI<T extends Mob> extends SelectorAINode<T> {
 
-    // My custom “fix spawn position” leaf.
-    // This runs first so the mob gets put somewhere sensible before doing anything else.
-    public final ExampleAILeaf<T> teleporter;
+    // Plays a sound when then boss appears
+    public final ExampleAILeaf<T> soundPlay;
 
-    // Vanilla AI that does: find player -> chase -> when close enough, call attackTarget().
+    // AI that does: find player -> chase -> when close enough, call attackTarget().
     // We keep it as a field so we can reuse the damage/knockback values from it.
     public final CollisionPlayerChaserAI<T> chaser;
 
-    // Vanilla “walk around randomly” node. This is what happens when there’s no player to chase.
+    // “walk around randomly” node. This is what happens when there’s no player to chase.
     public final WandererAINode<T> wanderer;
 
     public ExampleAI(int searchDistance, GameDamage damage, int knockback, int wanderFrequency) {
@@ -29,11 +28,13 @@ public class ExampleAI<T extends Mob> extends SelectorAINode<T> {
 
         // 1) Teleport / reposition leaf (highest priority).
         // (In my leaf: 8 tiles = how far to check for open space, 10 tiles = how far to search for a valid spot)
-        this.teleporter = new ExampleAILeaf<>(8, 10);
-        addChild(this.teleporter);
+        this.soundPlay = new ExampleAILeaf<>();
+        addChild(this.soundPlay);
 
         // 2) Chase + attack (second priority).
         this.chaser = new CollisionPlayerChaserAI<T>(searchDistance, damage, knockback) {
+
+
 
             // The chaser decides WHEN it should attack, but it asks us HOW to attack.
             // So we override this and forward it to our own method below.

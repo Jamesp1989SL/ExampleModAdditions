@@ -26,20 +26,35 @@ public class ExampleMod {
     public void init() {
         System.out.println("Hello world from my example mod!");
 
-        // The examples are split into different classes here for readability, but you can register them directly here in init if you wish
+        // Register categories first: Used by Items/Objects to appear correctly in Creative/crafting trees
         ExampleModCategories.load();
-        ExampleModEvents.load();
-        ExampleModJobs.load();
-        ExampleModBiomes.load();
-        ExampleModIncursions.load();
+
+        // Register packets early: Anything networked (mobs, settlers, job UIs, events) can safely reference packet IDs
+        ExampleModPackets.load();
+
+        // Core content building blocks first: Tiles/Objects/Items are referenced by biomes, incursions, mobs, projectiles, buffs, etc.
         ExampleModTiles.load();
         ExampleModObjects.load();
         ExampleModItems.load();
-        ExampleModMobs.load();
-        ExampleModSettlers.load();
+
+        // Combat + entity registries next: Projectiles and buffs often reference items/mobs, and mobs can reference buffs/projectiles.
         ExampleModProjectiles.load();
         ExampleModBuffs.load();
-        ExampleModPackets.load();
+        ExampleModMobs.load();
+
+        // Settlement systems after mobs/items exist: Settlers are mobs; jobs can reference settlers, items, and packets/UI.
+        ExampleModSettlers.load();
+        ExampleModJobs.load();
+
+        // World generation last-ish: Biomes/incursions can safely reference all registered tiles/objects/mobs/items now.
+        ExampleModBiomes.load();
+        ExampleModIncursions.load();
+
+        // Events after everything is registered: Lets event listeners safely reference IDs and content without ordering surprises.
+        ExampleModEvents.load();
+
+        // Journal last: JournalEntry.addMobEntries() resolves MobRegistry immediately at registration time.
+        ExampleModJournal.load();
     }
 
     public void initResources() {

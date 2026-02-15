@@ -4,6 +4,7 @@ import necesse.inventory.lootTable.LootTable;
 import necesse.inventory.lootTable.lootItem.LootItem;
 import necesse.inventory.lootTable.lootItem.ChanceLootItem;
 import necesse.inventory.lootTable.lootItem.OneOfLootItems;
+import necesse.inventory.lootTable.lootItem.RotationLootItem;
 
 /**
  * This loot table can be referenced from presets, object entities (like storage boxes),
@@ -20,7 +21,16 @@ public class ExampleLootTable {
      *  - groups like "pick one of these" (OneOfLootItems)
      */
     public static final LootTable exampleloottable = new LootTable(
-
+            // Rotating entries:
+            // This uses the (level + AtomicInteger lootRotation) arguments that chest rooms pass in.
+            // Position 0 = first item, position 1 = second item, etc.
+            //TODO make a trinket item
+            RotationLootItem.presetRotation(
+                    new LootItem("exampleboots"), // position 0
+                    new LootItem("examplehelmet"), // position 1
+                    new LootItem("examplechestplate"),// position 2 (example)
+                    new LootItem("examplefood")   // position 3 (example)
+            ),
             // Guaranteed drops:
             // LootItem(String itemStringID, int amount)
             // These are always added when the table is rolled.
@@ -38,8 +48,10 @@ public class ExampleLootTable {
                     // 0.60f = 60% chance for this item to be granted IF this option is selected.
                     // Because these are inside OneOfLootItems, the group will choose a single option,
                     // then that option rolls its chance.
-                    new ChanceLootItem(0.60f, "examplesword"),
-                    new ChanceLootItem(0.60f, "examplestaff")
+                    new ChanceLootItem(0.60f, "examplemeleesword"),
+                    new ChanceLootItem(0.60f, "examplemagicstaff"),
+                    new ChanceLootItem(0.60f, "examplesummonorb"),
+                    new ChanceLootItem(0.60f, "examplerangedbow")
             )
     );
 

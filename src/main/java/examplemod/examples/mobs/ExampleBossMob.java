@@ -19,6 +19,7 @@ import necesse.gfx.drawables.OrderableDrawables;
 import necesse.gfx.gameTexture.GameTexture;
 import necesse.inventory.lootTable.LootTable;
 import necesse.inventory.lootTable.lootItem.ChanceLootItem;
+import necesse.level.maps.CollisionFilter;
 import necesse.level.maps.Level;
 import necesse.level.maps.light.GameLight;
 
@@ -46,6 +47,12 @@ public class ExampleBossMob extends BossMob {
         collision = new Rectangle(-10, -7, 20, 14);
         hitBox = new Rectangle(-14, -12, 28, 24);
         selectBox = new Rectangle(-14, -7 - 34, 28, 48);
+    }
+
+    //ignore level collisions (this will still collide with the player
+    @Override
+    public CollisionFilter getLevelCollisionFilter() {
+        return null; // Level.collides(..., null) returns false in source
     }
 
     @Override

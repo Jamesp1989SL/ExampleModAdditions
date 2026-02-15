@@ -7,6 +7,7 @@ public class ExampleBaseRockObject extends RockObject {
 
     public ExampleBaseRockObject() {
         super("examplebaserock", new Color(92, 37, 23), "examplestone", "objects", "landscaping");
-        this.toolTier = 5.0F;
+        // Tier of pickaxe required to mine this rock
+        this.toolTier = 0.0F;
     }
 }
