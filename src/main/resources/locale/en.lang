@@ -36,13 +36,15 @@ examplearrow=Example Arrow
 examplehelmet=Example Helmet
 examplechestplate=Example Chestplate
 exampleboots=Example Boots
-examplebosssummonitem= Example Boss Summon Item
+examplebosssummonitem=Example Boss Summon Item
+exampletrinketitem=Example Trinket Item
 
 
 [itemtooltip]
 examplemagicstafftip=Shoots a homing, piercing projectile
-examplepotionitemtip= An example potion
-examplebosssummontip= Use in the Example Biome Cave to summon the Example Boss Mob
+examplepotionitemtip=An example potion
+examplebosssummontip=Use in the Example Biome Cave to summon the Example Boss Mob
+exampletrinkettip=Example Trinket. Acts like a Spelunker Potion
 
 [mob]
 examplemob=Example Mob

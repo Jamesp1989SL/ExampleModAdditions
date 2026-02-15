@@ -12,6 +12,7 @@ import examplemod.examples.items.tools.ExampleMagicStaffWeapon;
 import examplemod.examples.items.tools.ExampleMeleeSwordWeapon;
 import examplemod.examples.items.tools.ExampleRangedBowWeapon;
 import examplemod.examples.items.tools.ExampleSummonOrbWeapon;
+import examplemod.examples.items.trinkets.ExampleTrinketItem;
 import necesse.engine.registries.ItemRegistry;
 
 public class ExampleModItems {
@@ -44,5 +45,8 @@ public class ExampleModItems {
 
         // Ammo
         ItemRegistry.registerItem("examplearrow", new ExampleArrowItem(),5,true);
+
+        // Trinkets
+        ItemRegistry.registerItem("exampletrinketitem",new ExampleTrinketItem(),1,true);
     }
 }

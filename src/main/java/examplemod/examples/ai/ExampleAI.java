@@ -23,7 +23,6 @@ public class ExampleAI<T extends Mob> extends SelectorAINode<T> {
 
         // A Selector is basically: "try child #1, if it can run then use it,
         // otherwise try child #2, otherwise child #3..."
-        //
         // So the ORDER we add children is the ORDER of priority.
 
         // 1) Teleport / reposition leaf (highest priority).
