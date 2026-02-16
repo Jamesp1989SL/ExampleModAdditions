@@ -21,12 +21,12 @@ public class ExampleLootTable {
      *  - groups like "pick one of these" (OneOfLootItems)
      */
     public static final LootTable exampleloottable = new LootTable(
+
             // Rotating entries:
             // This uses the (level + AtomicInteger lootRotation) arguments that chest rooms pass in.
             // Position 0 = first item, position 1 = second item, etc.
-            //TODO make a trinket item
             RotationLootItem.presetRotation(
-                    new LootItem("exampleboots"), // position 0
+                    new LootItem("exampletrinketitem"), // position 0
                     new LootItem("examplehelmet"), // position 1
                     new LootItem("examplechestplate"),// position 2 (example)
                     new LootItem("examplefood")   // position 3 (example)

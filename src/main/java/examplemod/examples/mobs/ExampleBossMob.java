@@ -19,6 +19,8 @@ import necesse.gfx.drawables.OrderableDrawables;
 import necesse.gfx.gameTexture.GameTexture;
 import necesse.inventory.lootTable.LootTable;
 import necesse.inventory.lootTable.lootItem.ChanceLootItem;
+import necesse.inventory.lootTable.lootItem.LootItem;
+import necesse.inventory.lootTable.lootItem.RotationLootItem;
 import necesse.level.maps.CollisionFilter;
 import necesse.level.maps.Level;
 import necesse.level.maps.light.GameLight;
@@ -31,9 +33,21 @@ public class ExampleBossMob extends BossMob {
     // Loaded in examplemod.ExampleMod.initResources()
     public static GameTexture texture;
 
+    // Our regular loot table with a chance item
     public static LootTable lootTable = new LootTable(
-            ChanceLootItem.between(0.5f, "exampleitem", 1, 3) // 50% chance to drop between 1-3 example items
+            ChanceLootItem.between(0.5f, "exampleitem", 1, 3)
     );
+
+    // Indivitual boss unique loot rotation
+    public static RotationLootItem uniqueDrops = RotationLootItem.privateLootRotation(
+            new LootItem("examplemeleesword"),
+            new LootItem("examplemagicstaff"),
+            new LootItem("examplesummonorb"),
+            new LootItem("examplerangedbow"));
+
+    // LootTable for unique drops
+    public static LootTable privateLootTable = new LootTable(
+            uniqueDrops);
 
     // MUST HAVE an empty constructor
     public ExampleBossMob() {
@@ -69,10 +83,16 @@ public class ExampleBossMob extends BossMob {
                 )
         );
     }
-
+    // Our regular LootTable
     @Override
     public LootTable getLootTable() {
         return lootTable;
+    }
+
+    // The boss's Rotating loot table unique to each player
+    @Override
+    public LootTable getPrivateLootTable() {
+        return privateLootTable;
     }
 
     @Override

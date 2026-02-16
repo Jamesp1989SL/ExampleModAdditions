@@ -1,6 +1,7 @@
 package examplemod;
 
 import necesse.engine.GameLog;
+import necesse.engine.GlobalData;
 import necesse.engine.modLoader.ModSettings;
 import necesse.engine.save.LoadData;
 import necesse.engine.save.SaveData;
@@ -25,12 +26,10 @@ public class ExampleModSettings extends ModSettings {
         exampleBoolean = data.getBoolean("exampleBoolean", exampleBoolean);
         exampleInt = data.getInt("exampleInt", exampleInt);
         exampleString = data.getSafeString("exampleString", exampleString, false);
-
-        //log the settings to test
-        logLoadedSettings();
     }
 
-    private void logLoadedSettings() {
+    public void logLoadedSettings() {
+
         GameLog.out.println("[ExampleMod] Settings loaded:");
         GameLog.out.println("  exampleBoolean = " + exampleBoolean);
         GameLog.out.println("  exampleInt     = " + exampleInt);
