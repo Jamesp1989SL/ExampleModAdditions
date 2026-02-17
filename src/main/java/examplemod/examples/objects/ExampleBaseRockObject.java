@@ -6,8 +6,11 @@ import java.awt.Color;
 public class ExampleBaseRockObject extends RockObject {
 
     public ExampleBaseRockObject() {
-        super("examplebaserock", new Color(92, 37, 23), "examplestone", "objects", "landscaping");
-        // Tier of pickaxe required to mine this rock
-        this.toolTier = 0.0F;
+        super("examplebaserock",            // Texture for the base rock
+                new Color(92, 37, 23),        // Mini Map Pixel Colour
+                "examplestone",                        // Dropped Stone
+                "objects", "landscaping");   // Item Categories
+
+        this.toolTier = 0.0F;                          // Tier of pickaxe required to mine this rock
     }
 }

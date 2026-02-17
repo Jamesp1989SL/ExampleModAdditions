@@ -10,17 +10,17 @@ public class ExampleModJobs {
 
     public static void load(){
         // 1) Register the job type
-        JobTypeRegistry.registerType("weeding",
+        JobTypeRegistry.registerType("examplejobtype",
                 new JobType(
                         true,  // canChangePriority (shows in settlement UI)
                         true,  // defaultDisabledBySettler (locked for normal settlers)
-                        new LocalMessage("jobs", "weedingname"),
-                        new LocalMessage("jobs", "weedingtip")
+                        new LocalMessage("jobs", "examplejobname"),
+                        new LocalMessage("jobs", "examplejobtip")
                 )
         );
 
         // 2) Register our ExampleLevelJob //DEBUG
-        LevelJobRegistry.registerJob("weedgrass", ExampleLevelJob .class, "weeding");
+        LevelJobRegistry.registerJob("examplejob", ExampleLevelJob .class, "examplejobtype");
     }
 
 }

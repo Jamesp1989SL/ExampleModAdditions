@@ -18,13 +18,13 @@ import necesse.inventory.item.toolItem.projectileToolItem.magicProjectileToolIte
 import necesse.level.maps.Level;
 
 // Extends MagicProjectileToolItem
-public class ExampleMagicStaffWeapon extends MagicProjectileToolItem {
+public class ExampleStaffMagicWeapon extends MagicProjectileToolItem {
 
     // This weapon will shoot out some projectiles.
     // Different classes for specific projectile weapon are already in place that you can use:
     // GunProjectileToolItem, BowProjectileToolItem, BoomerangToolItem, etc.
 
-    public ExampleMagicStaffWeapon() {
+    public ExampleStaffMagicWeapon() {
         super(400, null);
         rarity = Rarity.RARE;
         attackAnimTime.setBaseValue(300);
@@ -58,7 +58,7 @@ public class ExampleMagicStaffWeapon extends MagicProjectileToolItem {
 
     @Override
     public InventoryItem onAttack(Level level, int x, int y, ItemAttackerMob attackerMob, int attackHeight, InventoryItem item, ItemAttackSlot slot, int animAttack, int seed, GNDItemMap mapContent) {
-        // This method is ran on the attacking client and on the server.
+        // This method is run on the attacking client and on the server.
         // This means we need to tell other clients that a projectile is being added.
         // Every projectile weapon is set to include an integer seed used to make sure that the attacking client
         // and the server gives the projectiles added the same uniqueID.

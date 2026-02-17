@@ -1,6 +1,5 @@
 package examplemod.examples.objects;
 
-import examplemod.ExampleMod;
 import examplemod.examples.packets.ExampleConfigInteractPacket;
 import necesse.engine.gameLoop.tickManager.TickManager;
 import necesse.entity.mobs.PlayerMob;

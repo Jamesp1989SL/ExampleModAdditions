@@ -15,7 +15,7 @@ examplechair=Example Chair
 exampleleveleventobject=Example Level Event Object
 examplejobobject=Example Job Object
 exampleconfigobject=Example Config Object
-examplepressureplateobject=Example Pressure Plate
+examplepressureplate=Example Pressure Plate
 examplewalltrap=Example Wall Trap
 
 [item]
@@ -37,7 +37,7 @@ examplehelmet=Example Helmet
 examplechestplate=Example Chestplate
 exampleboots=Example Boots
 examplebosssummonitem=Example Boss Summon Item
-exampletrinketitem=Example Trinket Item
+exampletrinket=Example Trinket
 
 
 [itemtooltip]
@@ -55,7 +55,7 @@ examplesettlermobname=<name> The Example Settler
 
 [buff]
 examplebuff=Example Buff
-examplearmorsetbonus=Example Armor Set Bonus
+examplearmorsetbonusbuff=Example Armor Set Bonus Buff
 
 [biome]
 exampleincursion=Example Incursion
@@ -69,15 +69,15 @@ examplemodobjectsubcat=ExampleMod Objects
 examplemodfurnaturesubcat=ExampleMod Furnature
 
 [jobs]
-weedingname=Weeding
-weedingtip=Keeps grass cleared in assigned zones.
+examplejobname=Example Job
+examplejobtip=Keeps grass cleared in assigned zones.
 
 [ui]
 examplejobzone=Example Job Zone
-examplejobzonedefname=Weeding Zone {number}
+examplejobzonedefname=Example Job Zone {number}
 
 [activities]
-examplejob=Weeding
+examplejob=Doing Example Job
 
 [journal]
 examplebiomesurface=Example Biome Surface

@@ -1,7 +1,6 @@
 package examplemod;
 
 import necesse.engine.GameLog;
-import necesse.engine.GlobalData;
 import necesse.engine.modLoader.ModSettings;
 import necesse.engine.save.LoadData;
 import necesse.engine.save.SaveData;

@@ -5,14 +5,14 @@ import necesse.inventory.item.Item;
 import necesse.inventory.item.toolItem.summonToolItem.SummonToolItem;
 import necesse.inventory.lootTable.presets.SummonWeaponsLootTable;
 
-public class ExampleSummonOrbWeapon extends SummonToolItem {
-    public ExampleSummonOrbWeapon() {
-        // mobStringID, followPosition, summonSpaceTaken, enchantCost, lootTableCategory
-        super("examplesummonmob",
-                FollowPosition.PYRAMID,
-                1.0F,
-                400,
-                SummonWeaponsLootTable.summonWeapons);
+public class ExampleOrbSummonWeapon extends SummonToolItem {
+    public ExampleOrbSummonWeapon() {
+        // , followPosition, summonSpaceTaken, enchantCost, lootTableCategory
+        super("examplesummonmob",               // Mob String ID
+                FollowPosition.PYRAMID,                    // Follow Position
+                1.0F,                                      // Summon Space Taken
+                400,                                       // Enchant Cost
+                SummonWeaponsLootTable.summonWeapons);     // Loot Table Category
 
         this.rarity = Item.Rarity.UNCOMMON;
 

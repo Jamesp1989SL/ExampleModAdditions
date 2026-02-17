@@ -13,7 +13,7 @@ import necesse.level.maps.presets.Preset;
  * This version builds the room using normal Java code (loops and variables),
  * instead of using a big PRESET={...} text script.
  */
-public class ExamplePresetCode extends Preset {
+public class ExampleCodePreset extends Preset {
 
     /**
      * Constructor
@@ -21,7 +21,7 @@ public class ExamplePresetCode extends Preset {
      * The GameRandom is passed in so things like loot can be randomized,
      * but still be repeatable (important for world generation).
      */
-    public ExamplePresetCode(GameRandom random) {
+    public ExampleCodePreset(GameRandom random) {
 
         // This calls the Preset parent class constructor.
         // It sets the size of the preset to 15 tiles wide and 11 tiles tall.
@@ -83,7 +83,7 @@ public class ExamplePresetCode extends Preset {
         int storageboxY = height / 2;
 
         /*
-         * Place the storage box object at the center.
+         * Place the storage box object at the centre.
          *
          * setObject(x, y, objectID, rotation)
          *
@@ -106,7 +106,7 @@ public class ExamplePresetCode extends Preset {
         /*
          * OPTIONAL SAFETY RULE (CanApply predicate):
          *
-         * This says: "Only allow this preset to be placed if the area is suitable."
+         * "Only allow this preset to be placed if the area is suitable."
          *
          * addCanApplyRectEachPredicate(...) checks every tile in a rectangle.
          * If ANY tile fails the test, the preset cannot be applied there.
@@ -115,8 +115,8 @@ public class ExamplePresetCode extends Preset {
          *   !level.getTile(levelX, levelY).isFloor
          *
          * Meaning:
-         *   - If the tile already IS a floor, then this returns false (bad)
-         *   - If the tile is NOT a floor, then this returns true (good)
+         *   - If the tile already IS a floor, then this returns false
+         *   - If the tile is NOT a floor, then this returns true
          *
          * In plain English:
          *   "Don't place this room on top of an area that already has flooring."

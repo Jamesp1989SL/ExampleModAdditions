@@ -6,20 +6,12 @@ import necesse.level.maps.presets.Preset;
 
 /**
  * ExamplePreset (Script-based)
- *
- * This preset is the same idea as your code-built room, but it is created using a big text string
+ * This preset is the same idea as the code-built room, but it is created using a big text string
  * in Necesse's "PRESET script" format.
- *
- * Think of it like this:
- * - The big string contains a saved layout (tiles + objects + rotations)
- * - applyScript(...) reads that string and loads it into this Preset
- * - Then we do extra steps (like filling a chest with loot)
  */
 public class ExamplePreset extends Preset {
 
     /**
-     * Constructor
-     *
      * You pass in GameRandom so anything random (like loot) can be rolled properly.
      * In world generation, Necesse often uses a seeded random so the same world seed
      * produces the same results every time.
@@ -36,18 +28,18 @@ public class ExamplePreset extends Preset {
          * It's basically a "saved blueprint" of a structure.
          * The game can export these, and you can paste them into code like this.
          *
-         * The important parts (high level):
+         * The important parts
          *
          * width / height
          *   - Size of the structure.
          *
          * tileIDs + tiles
-         *   - "tileIDs" is a small list (palette) of tile types used in this preset.
+         *   - "tileIDs" is a list of tile types used in this preset.
          *   - "tiles" is the full grid.
          *   - Each number in "tiles" refers to an entry from tileIDs.
          *
          * objectIDs + objects
-         *   - Same idea as tiles, but for objects (walls, torches, air, storagebox).
+         *   - Same idea as tiles, but for objects
          *   - "objectIDs" is the palette.
          *   - "objects" is the full grid.
          *
@@ -84,7 +76,7 @@ public class ExamplePreset extends Preset {
         /*
          * Add loot into the storage box inside the preset.
          *
-         * IMPORTANT IDEA:
+         * The idea here is:
          * Coordinates here are PRESET coordinates, not world coordinates.
          *
          * So (5, 5) means:
@@ -112,8 +104,8 @@ public class ExamplePreset extends Preset {
          *
          * The ! means "not".
          * So:
-         * - if isFloor is true, !isFloor is false (so placement fails)
-         * - if isFloor is false, !isFloor is true (so placement is allowed)
+         * - if isFloor is true, !isFloor is false then placement fails
+         * - if isFloor is false, !isFloor is true then placement is allowed
          */
         addCanApplyRectEachPredicate(0, 0, width, height, 0,
                 (level, levelX, levelY, dir) -> !level.getTile(levelX, levelY).isFloor

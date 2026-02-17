@@ -19,7 +19,7 @@ public class ExampleModResources {
         ExampleBossMob.texture = GameTexture.fromFile("mobs/examplebossmob");
         ExampleSummonWeaponMob.texture = GameTexture.fromFile("mobs/examplesummonmob");
 
-        //initialising the sound to be used by our boss mob
+        //initializing the sound to be used by our boss mob
         ExampleMod.EXAMPLESOUND = GameSound.fromFile("examplesound");
 
         // Optional settings (volume/pitch/falloff) – used when playing via SoundSettings

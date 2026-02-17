@@ -5,7 +5,11 @@ import necesse.inventory.item.placeableItem.consumableItem.potionConsumableItem.
 public class ExamplePotionItem extends SimplePotionItem {
 
     public ExamplePotionItem() {
-        super(100,Rarity.COMMON,"examplebuff",100, "examplepotionitemtip");
+        super(100,                           // Max Stack Size
+                Rarity.COMMON,                        // Item Rarity
+                "examplebuff",                        // Buff to apply
+                100,                                  // Buff Duration in seconds
+                "examplepotionitemtip");   // Localization text to load and display
     }
 
 }

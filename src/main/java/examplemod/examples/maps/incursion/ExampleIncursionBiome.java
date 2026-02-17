@@ -77,13 +77,13 @@ public class ExampleIncursionBiome extends IncursionBiome {
     }
 
     /**
-     * Colors used for the glowing gateway lights on the fallen altar.
-     * IncursionBiome requires this method; expected to return list of 6 colors.
+     * Colours used for the glowing gateway lights on the fallen altar.
+     * IncursionBiome requires this method; expected to return list of 6 colours.
      */
     @Override
     public ArrayList<Color> getFallenAltarGatewayColorsForBiome() {
         ArrayList<Color> colors = new ArrayList<>();
-        // Repeat colors to satisfy the altar rendering requirements
+        // Repeat colours to satisfy the altar rendering requirements
         colors.add(new Color(181, 80, 120));
         colors.add(new Color(215, 42, 52));
         colors.add(new Color(181, 92, 59));

@@ -26,7 +26,7 @@ public class ExampleLootTable {
             // This uses the (level + AtomicInteger lootRotation) arguments that chest rooms pass in.
             // Position 0 = first item, position 1 = second item, etc.
             RotationLootItem.presetRotation(
-                    new LootItem("exampletrinketitem"), // position 0
+                    new LootItem("exampletrinket"), // position 0
                     new LootItem("examplehelmet"), // position 1
                     new LootItem("examplechestplate"),// position 2 (example)
                     new LootItem("examplefood")   // position 3 (example)

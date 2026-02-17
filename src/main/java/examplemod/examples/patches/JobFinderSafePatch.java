@@ -9,10 +9,10 @@ import necesse.entity.mobs.job.EntityJobWorker;
 import necesse.entity.mobs.job.FoundJob;
 import necesse.entity.mobs.job.JobTypeHandler;
 
-public final class JobFinderSafe {
-    private JobFinderSafe() {}
+public final class JobFinderSafePatch {
+    private JobFinderSafePatch() {}
 
-    @SuppressWarnings({"unchecked", "rawtypes"})
+    @SuppressWarnings({"rawtypes"})
     public static Stream<FoundJob> safeStreamFoundJobs(JobTypeHandler handler, EntityJobWorker worker) {
         if (handler == null || worker == null) return Stream.empty();
 

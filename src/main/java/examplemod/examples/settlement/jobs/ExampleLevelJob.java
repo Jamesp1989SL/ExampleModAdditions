@@ -12,34 +12,43 @@ import necesse.level.maps.LevelObject;
 import necesse.level.maps.levelData.jobs.LevelJob;
 import necesse.level.maps.levelData.jobs.MineObjectLevelJob;
 
+/**
+ * A simple settlement job:
+ * "Go to this tile and clear the grass object there."
+ * We extend MineObjectLevelJob because Necesse already has a job type for
+ * destroying an object at a tile.
+ */
 public class ExampleLevelJob extends MineObjectLevelJob {
 
+    // Create a new job at a tile position
     public ExampleLevelJob(int tileX, int tileY) {
         super(tileX, tileY);
     }
 
+    // Create a job from saved data (not used if shouldSave() returns false)
     public ExampleLevelJob(LoadData save) {
         super(save);
     }
 
     @Override
     public boolean isValid() {
-        // Basic job validity + level presence, etc.
+        // Use the base checks (it will call isValidObject on the current object)
         return super.isValid();
     }
 
     @Override
     public boolean isValidObject(LevelObject object) {
-        // Don't clear decorative/player-placed grass
+        // Do NOT let settlers clear objects that a player placed.
         if (getLevel().objectLayer.isPlayerPlaced(this.tileX, this.tileY)) return false;
 
-        // Only target grass objects
+        // Only allow this job to target grass objects.
         return object.object != null && object.object.isGrass;
     }
 
     @Override
     public boolean isSameJob(LevelJob other) {
-        // Helps jobsLayer dedupe so your post doesn't spam the same job repeatedly
+        // Jobs system uses this to avoid duplicates.
+        // If another ExampleLevelJob exists at the same tile, treat it as the same job.
         return other instanceof ExampleLevelJob
                 && other.tileX == this.tileX
                 && other.tileY == this.tileY;
@@ -47,40 +56,64 @@ public class ExampleLevelJob extends MineObjectLevelJob {
 
     @Override
     public boolean shouldSave() {
-        // Post will recreate jobs as needed
+        // Don't save this job. The settlement can recreate it later if needed.
         return false;
     }
 
+    /**
+     * This builds the actual steps the settler will do.
+     * Here we only add ONE step: mine/destroy the grass object.
+     */
     public static <T extends ExampleLevelJob> JobSequence getJobSequence(
             EntityJobWorker worker, final boolean useItem, final FoundJob<T> foundJob
     ) {
+        // Get the current object at the job tile (might be null if it changed)
         LevelObject target = foundJob.job.getObject();
 
-        // target/object can be null if the job got invalidated between pickup and execution
+        // Message shown for the job (in settlement UI)
         LocalMessage msg = new LocalMessage(
                 "activities",
                 "examplejob",
                 "target",
-                target != null && target.object != null ? target.object.getLocalization() : new LocalMessage("ui", "unknown")
+                (target != null && target.object != null)
+                        ? target.object.getLocalization()
+                        : new LocalMessage("ui", "unknown")
         );
 
+        // A list of work steps
         final GameLinkedListJobSequence seq = new GameLinkedListJobSequence(msg);
 
+        // Add the work step: go to tile + hit the object until it breaks
         seq.add(new MineObjectActiveJob(
                 worker,
                 foundJob.priority,
                 foundJob.job.tileX,
                 foundJob.job.tileY,
+
+                // Keep working only while the job still exists AND the object is still valid grass
                 lo -> (!foundJob.job.isRemoved() && foundJob.job.isValidObject(lo)),
+
+                // Reservation (stops 2 settlers trying to do the same tile)
                 foundJob.job.reservable,
+
+                // Item used for the "swing" animation (visual only)
                 "farmingscythe",
+
+                // Damage per hit to the object
                 5,
+
+                // Time per swing (ms)
                 250,
+
+                // Extra delay between swings (ms)
                 0
         ) {
             @Override
             public void onObjectDestroyed(ObjectDamageResult result) {
+                // Make pickup jobs for any drops
                 addItemPickupJobs(foundJob.priority, result, seq);
+
+                // Remove the job so it doesn't stay posted
                 foundJob.job.remove();
             }
         });

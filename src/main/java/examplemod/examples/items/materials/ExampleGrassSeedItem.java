@@ -4,7 +4,6 @@ import necesse.inventory.item.placeableItem.tileItem.GrassSeedItem;
 
 /**
  * A seed item that turns dirt into our custom grass tile when placed.
- *
  *   uses GrassSeedItem for grass seeds. It handles:
  *   Only placing on dirt
  *   Tile placement + preview
@@ -15,7 +14,6 @@ public class ExampleGrassSeedItem extends GrassSeedItem {
 
     public ExampleGrassSeedItem() {
         // This must match your TileRegistry stringID
-        // i.e. TileRegistry.registerTile("examplegrasstile", ...)
         super("examplegrasstile");
     }
 }

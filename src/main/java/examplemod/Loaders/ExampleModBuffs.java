@@ -10,7 +10,7 @@ public class ExampleModBuffs {
             BuffRegistry.registerBuff("examplebuff", new ExampleBuff());
 
             // Register our Armor Set Bonus
-            BuffRegistry.registerBuff("examplearmorsetbonus", new ExampleArmorSetBuff());
+            BuffRegistry.registerBuff("examplearmorsetbonusbuff", new ExampleArmorSetBuff());
 
             // Register our Arrow Buff
             BuffRegistry.registerBuff("examplearrowbuff", new ExampleArrowBuff());

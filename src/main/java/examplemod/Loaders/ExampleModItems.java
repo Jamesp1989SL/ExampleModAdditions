@@ -8,10 +8,10 @@ import examplemod.examples.items.consumable.ExampleBossSummonItem;
 import examplemod.examples.items.consumable.ExampleFoodItem;
 import examplemod.examples.items.consumable.ExamplePotionItem;
 import examplemod.examples.items.materials.*;
-import examplemod.examples.items.tools.ExampleMagicStaffWeapon;
-import examplemod.examples.items.tools.ExampleMeleeSwordWeapon;
-import examplemod.examples.items.tools.ExampleRangedBowWeapon;
-import examplemod.examples.items.tools.ExampleSummonOrbWeapon;
+import examplemod.examples.items.tools.ExampleStaffMagicWeapon;
+import examplemod.examples.items.tools.ExampleSwordMeleeWeapon;
+import examplemod.examples.items.tools.ExampleBowRangedWeapon;
+import examplemod.examples.items.tools.ExampleOrbSummonWeapon;
 import examplemod.examples.items.trinkets.ExampleTrinketItem;
 import necesse.engine.registries.ItemRegistry;
 
@@ -28,10 +28,10 @@ public class ExampleModItems {
         ItemRegistry.registerItem("examplegrassseed", new ExampleGrassSeedItem(),1,true);
 
         // Tools
-        ItemRegistry.registerItem("examplemeleesword", new ExampleMeleeSwordWeapon(), 20, true);
-        ItemRegistry.registerItem("examplemagicstaff", new ExampleMagicStaffWeapon(), 30, true);
-        ItemRegistry.registerItem("examplesummonorb", new ExampleSummonOrbWeapon(),40,true);
-        ItemRegistry.registerItem("examplerangedbow", new ExampleRangedBowWeapon(),10,true);
+        ItemRegistry.registerItem("examplemeleesword", new ExampleSwordMeleeWeapon(), 20, true);
+        ItemRegistry.registerItem("examplemagicstaff", new ExampleStaffMagicWeapon(), 30, true);
+        ItemRegistry.registerItem("examplesummonorb", new ExampleOrbSummonWeapon(),40,true);
+        ItemRegistry.registerItem("examplerangedbow", new ExampleBowRangedWeapon(),10,true);
 
         // Armor
         ItemRegistry.registerItem("examplehelmet", new ExampleHelmetArmorItem(), 200f, true);
@@ -47,6 +47,6 @@ public class ExampleModItems {
         ItemRegistry.registerItem("examplearrow", new ExampleArrowItem(),5,true);
 
         // Trinkets
-        ItemRegistry.registerItem("exampletrinketitem",new ExampleTrinketItem(),1,true);
+        ItemRegistry.registerItem("exampletrinket",new ExampleTrinketItem(),1,true);
     }
 }

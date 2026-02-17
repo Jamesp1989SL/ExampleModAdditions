@@ -1,16 +1,11 @@
 package examplemod.examples.settlement.settlers;
 
-import java.util.Collections;
-import java.util.List;
 import java.util.function.Supplier;
-
 import necesse.engine.localization.message.GameMessage;
 import necesse.engine.localization.message.LocalMessage;
-import necesse.engine.network.server.ServerClient;
 import necesse.engine.util.TicketSystemList;
 import necesse.entity.mobs.friendly.human.HumanMob;
 import necesse.gfx.gameTexture.GameTexture;
-import necesse.inventory.InventoryItem;
 import necesse.level.maps.levelData.settlementData.ServerSettlementData;
 import necesse.level.maps.levelData.settlementData.settler.Settler;
 

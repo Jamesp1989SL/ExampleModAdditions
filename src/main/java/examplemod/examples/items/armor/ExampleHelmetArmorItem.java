@@ -18,7 +18,7 @@ public class ExampleHelmetArmorItem extends SetHelmetArmorItem {
                 "examplehelmet",     //helmet texture name
                 "examplechestplate",            //chest item STRING ID
                 "exampleboots",                 //boots item STRING ID
-                "examplearmorsetbonus"          //buff STRING ID
+                "examplearmorsetbonusbuff"          //buff STRING ID
         );
     }
 }

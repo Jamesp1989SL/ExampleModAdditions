@@ -53,14 +53,14 @@ public class ExampleModObjects {
         ObjectRegistry.registerObject("exampleconfigobject", new ExampleConfigObject(),1,true);
 
         // Register an example pressure plate object
-        ObjectRegistry.registerObject("examplepressureplateobject",new ExamplePressurePlateObject(),1,true);
+        ObjectRegistry.registerObject("examplepressureplate",new ExamplePressurePlateObject(),1,true);
 
         // Get the wall object we want this trap to attach to.
         // ObjectRegistry stores everything as a generic "GameObject"
         // so we fetch by string ID ("examplewall") and cast it to WallObject.
-        // Takes the texture of the wall object and overlays our "examplewalltrapobject"
+        // Takes the texture of the wall object and overlays our "examplewalltrap"
         WallObject exampleWall = (WallObject) ObjectRegistry.getObject("examplewall");
-        ObjectRegistry.registerObject("examplewalltrapobject",new ExampleWallTrapObject(exampleWall),1,true);
+        ObjectRegistry.registerObject("examplewalltrap",new ExampleWallTrapObject(exampleWall),1,true);
 
 
 

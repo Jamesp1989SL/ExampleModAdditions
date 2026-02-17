@@ -250,11 +250,11 @@ public class ExampleBiome extends Biome {
 // which tiles/objects to use when it builds the room.
         ChestRoomSet exampleSet = new ChestRoomSet(
                 "exampletile",                    // The floor tile name the preset should use
-                "examplepressureplateobject",                // The pressure plate object to place in the room
+                "examplepressureplate",                // The pressure plate object to place in the room
                 exampleWalls,                                // WallSet we made earlier. It supplies the wall + door + trap object by looking up IDs that start with "example"
                 columns,                                     // Just the column style (visual decoration)
                 "storagebox",                                // The chest object that will be placed in the room
-                "examplewalltrapobject"        // A trap object ID to use (this must be a real registered object ID)
+                "examplewalltrap"        // A trap object ID to use (this must be a real registered object ID)
         );
 
 // Now we build the actual room preset using that set.

@@ -18,7 +18,7 @@ public class ExampleJobObjectEntity extends ObjectEntity {
 
     public ExampleJobObjectEntity(Level level, int tileX, int tileY) {
         // NOTE: ObjectEntity constructor needs (level, type, x, y)
-        super(level, "exampleweedingpost", tileX, tileY);
+        super(level, "examplejobobjectentity", tileX, tileY);
         this.shouldSave = true;
 
         this.scanDX = -radiusTiles;
@@ -72,7 +72,7 @@ public class ExampleJobObjectEntity extends ObjectEntity {
             LevelObject lo = level.getLevelObject(x, y);
             if (lo.object == null || !lo.object.isGrass) continue;
 
-            // Add your weeding job
+            // Add your example job
             level.jobsLayer.addJob(new ExampleLevelJob(x,y));
         }
     }

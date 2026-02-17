@@ -18,7 +18,7 @@ public class JobFinderStreamFoundJobsHandlersPatch {
             @Advice.FieldValue("worker") EntityJobWorker worker,
             @Advice.Local("out") Stream<FoundJob> out
     ) {
-        out = JobFinderSafe.safeStreamFoundJobs(handler, worker);
+        out = JobFinderSafePatch.safeStreamFoundJobs(handler, worker);
         return true; // skip vanilla method body
     }
 

@@ -2,7 +2,6 @@ package examplemod.examples.items.ammo;
 
 import necesse.engine.registries.ProjectileRegistry;
 import necesse.entity.mobs.GameDamage;
-import necesse.entity.mobs.Mob;
 import necesse.entity.mobs.itemAttacker.ItemAttackerMob;
 import necesse.entity.projectile.Projectile;
 import necesse.inventory.item.arrowItem.ArrowItem;
@@ -24,14 +23,13 @@ public class ExampleArrowItem extends ArrowItem {
                                     float velocity, int range, GameDamage damage, int knockback,
                                     ItemAttackerMob owner) {
 
-        // Same exact pattern as StoneArrowItem / IronArrowItem, etc.
         return ProjectileRegistry.getProjectile(
                 "examplearrowprojectile",           // your projectile stringID
                 owner.getLevel(),
                 x, y, targetX, targetY,
                 velocity, range,
                 damage, knockback,
-                (Mob) owner
+                owner
         );
     }
 }

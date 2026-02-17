@@ -4,6 +4,6 @@ import necesse.inventory.item.placeableItem.StonePlaceableItem;
 
 public class ExampleStoneItem extends StonePlaceableItem {
    public ExampleStoneItem(){
-    super(100);
+    super(100);  // Max Stack Size
    }
 }
