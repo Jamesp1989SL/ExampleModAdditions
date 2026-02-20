@@ -1,29 +1,86 @@
 [tile]
 exampletile=Example Tile
+examplegrasstile=Example Grass Tile
 
 [object]
 exampleobject=Example Object
+examplebaserock=Example Rock
+exampleore=Example Ore
+examplesapling=Example Sapling
+exampletree=Example Tree
+examplegrass=Example Grass
+examplewall=Example Wall
+exampledoor=Example Door
+examplechair=Example Chair
+exampleleveleventobject=Example Level Event Object
+examplejobobject=Example Job Object
+exampleconfigobject=Example Config Object
+examplepressureplate=Example Pressure Plate
+examplewalltrap=Example Wall Trap
 
 [item]
 exampleitem=Example Item
-examplehuntincursionitem=Example Hunt Incursion Item
-examplepotionitem=Example Potion
-examplesword=Example Sword
-examplestaff=Example Staff
-examplefooditem=Example Food
+examplestone=Example Stone
+exampleore=Example Ore
+examplebar=Example Bar
+examplelog=Example Log
+examplegrassseed=Example Grass Seed
+examplehuntincursionmaterial=Example Hunt Incursion Material
+examplepotion=Example Potion
+examplefood=Example Food
+examplemeleesword=Example Melee Weapon
+examplemagicstaff=Example Magic Weapon
+examplerangedbow= Example Ranged Weapon
+examplesummonorb=Example Summon Weapon
+examplearrow=Example Arrow
+examplehelmet=Example Helmet
+examplechestplate=Example Chestplate
+exampleboots=Example Boots
+examplebosssummonitem=Example Boss Summon Item
+exampletrinket=Example Trinket
+
 
 [itemtooltip]
-examplestafftip=Shoots a homing, piercing projectile
-examplepotionitemtip= An example potion
+examplemagicstafftip=Shoots a homing, piercing projectile
+examplepotionitemtip=An example potion
+examplebosssummontip=Use in the Example Biome Cave to summon the Example Boss Mob
+exampletrinkettip=Example Trinket. Acts like a Spelunker Potion
 
 [mob]
 examplemob=Example Mob
+examplebossmob=Example Boss
+examplesummonmob=Example Summon Mob
+examplesettlermob=Example Settler
+examplesettlermobname=<name> The Example Settler
 
 [buff]
 examplebuff=Example Buff
+examplearmorsetbonusbuff=Example Armor Set Bonus Buff
 
 [biome]
 exampleincursion=Example Incursion
 
 [incursion]
 exampleincursion=Example Incursion
+
+[itemcategory]
+examplemodrootcat=ExampleMod
+examplemodobjectsubcat=ExampleMod Objects
+examplemodfurnaturesubcat=ExampleMod Furnature
+
+[jobs]
+examplejobname=Example Job
+examplejobtip=Keeps grass cleared in assigned zones.
+
+[ui]
+examplejobzone=Example Job Zone
+examplejobzonedefname=Example Job Zone {number}
+
+[activities]
+examplejob=Doing Example Job
+
+[journal]
+examplebiomesurface=Example Biome Surface
+examplebiomecave=Example Biome Cave
+examplebiomedeepcave=Example Biome Deep Cave
+
