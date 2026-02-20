@@ -27,6 +27,9 @@ public class ExampleMod {
         System.out.println("Hello world from my example mod!");
         settings.logLoadedSettings(); // log the loaded settings for debug
 
+        // Register Tech Trees
+        ExampleModTech.load();
+
         // Register categories first: Used by Items/Objects to appear correctly in Creative/crafting trees
         ExampleModCategories.load();
 

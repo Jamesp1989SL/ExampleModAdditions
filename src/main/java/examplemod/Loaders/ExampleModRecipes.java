@@ -118,7 +118,7 @@ public class ExampleModRecipes {
         Recipes.registerModRecipe(new Recipe(
                 "exampleobject",
                 1,
-                RecipeTechRegistry.WORKSTATION,
+                ExampleModTech.EXAMPLE_TECH,
                 new Ingredient[]{
                         new Ingredient("examplestone", 7),
                         new Ingredient("exampleitem", 3)
