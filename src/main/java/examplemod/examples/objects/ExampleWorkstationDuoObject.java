@@ -4,10 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.awt.Color;
 import java.awt.Rectangle;
+
+import examplemod.Loaders.ExampleModTech;
 import necesse.engine.localization.message.GameMessage;
 import necesse.engine.localization.message.LocalMessage;
 import necesse.engine.registries.ObjectRegistry;
-import necesse.engine.registries.RecipeTechRegistry;
 import necesse.gfx.gameTexture.GameTexture;
 import necesse.inventory.recipe.Tech;
 import necesse.level.gameObject.ObjectPlaceOption;
@@ -38,6 +39,37 @@ public class ExampleWorkstationDuoObject extends CraftingStationObject {
 
         // Optional: gives a nicer hover area (same idea as vanilla duo)
         this.hoverHitbox = new Rectangle(0, -16, 32, 48);
+    }
+
+    @Override
+    public Rectangle getCollision(Level level, int x, int y, int rotation) {
+
+        // This returns the "solid" hitbox for the object (what blocks movement).
+        // Coordinates are in pixels:
+        // - x,y are tile coords
+        // - each tile is 32x32 pixels
+        //
+        // The object can be rotated (0-3), and the collision box changes slightly
+        // depending on which way it's facing.
+
+        if (rotation == 0)
+            // Rotation 0: a taller box that starts at the top of the tile.
+            // 4px inset from the left, 24px wide, 26px tall.
+            return new Rectangle(x * 32 + 4, y * 32, 24, 26);
+
+        if (rotation == 1)
+            // Rotation 1: a shorter/wider box, shifted in from left and down.
+            // Starts 6px in and 6px down, 26px wide, 20px tall.
+            return new Rectangle(x * 32 + 6, y * 32 + 6, 26, 20);
+
+        if (rotation == 2)
+            // Rotation 2: the tallest version (almost fills the tile vertically).
+            // Starts 4px in and 4px down, 24px wide, 28px tall.
+            return new Rectangle(x * 32 + 4, y * 32 + 4, 24, 28);
+
+        // Rotation 3 (default): similar size to rotation 1 but shifted left a bit.
+        // Starts at the left edge, 6px down, 26px wide, 20px tall.
+        return new Rectangle(x * 32, y * 32 + 6, 26, 20);
     }
 
     @Override
@@ -223,7 +255,7 @@ public class ExampleWorkstationDuoObject extends CraftingStationObject {
     @Override
     public Tech[] getCraftingTechs() {
         // Use whatever techs you want. This is just an example.
-        return new Tech[] { RecipeTechRegistry.WORKSTATION };
+        return new Tech[] { ExampleModTech.EXAMPLE_TECH };
     }
 
     // Call this from your mod init to register BOTH pieces

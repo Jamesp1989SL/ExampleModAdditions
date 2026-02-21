@@ -28,6 +28,35 @@ public class ExampleWorkstationDuo2Object extends CraftingStationObject {
         this.isLightTransparent = true;
         this.hoverHitbox = new Rectangle(0, -16, 32, 48);
     }
+    @Override
+    public Rectangle getCollision(Level level, int x, int y, int rotation) {
+
+        // Collision is in pixels, not tiles.
+        // Each tile is 32x32 pixels.
+        //
+        // We return a rectangle that blocks movement for this object.
+        // Different rotations can have different shapes, so we pick a different
+        // rectangle depending on which way the object is facing.
+
+        if (rotation == 0)
+            // Rotation 0: inset a bit from the tile edges (4px in from left/top),
+            // and make it mostly tall (24x28) so it doesn't fill the whole tile.
+            return new Rectangle(x * 32 + 4, y * 32 + 4, 24, 28);
+
+        if (rotation == 1)
+            // Rotation 1: shape is wider / shorter.
+            // Starts at left edge, 6px down, size 26x20.
+            return new Rectangle(x * 32, y * 32 + 6, 26, 20);
+
+        if (rotation == 2)
+            // Rotation 2: similar to rotation 0 but shifted upward a bit.
+            // Starts 4px in from left, at the top edge, size 24x26.
+            return new Rectangle(x * 32 + 4, y * 32, 24, 26);
+
+        // Rotation 3 (default): same idea as rotation 1 but shifted right a bit.
+        // Starts 6px in from left and 6px down, size 26x20.
+        return new Rectangle(x * 32 + 6, y * 32 + 6, 26, 20);
+    }
 
     @Override
     public void addDrawables(List<LevelSortedDrawable> list, OrderableDrawables tileList,
@@ -76,16 +105,16 @@ public class ExampleWorkstationDuo2Object extends CraftingStationObject {
             // We aren't using this here ? what uses this ?
             // We pick a different flame sprite every 300 ticks:
             // worldTime % 1200 gives a loop, / 300 makes it 0..3 (4 frames).
-            //int flameSprite = (int) (level.getWorldEntity().getWorldTime() % 1200L / 300L);
+            int flameSprite = (int) (level.getWorldEntity().getWorldTime() % 1200L / 300L);
 
             // flameSprite % 2 picks column 0 or 1
             // 7 + flameSprite / 2 picks row 7 or 8
             // (So the 4 frames are arranged in a 2x2 block starting at (0,7))
 
-            //options.add(this.texture.initDraw().sprite(flameSprite % 2, 7 + flameSprite / 2, 32)
-                    //.addObjectDamageOverlay(this, level, tileX, tileY)
-                    //.light(light)
-                    //.pos(drawX, drawY));                                 // flame sits on the bottom tile
+            options.add(this.texture.initDraw().sprite(flameSprite % 2, 7 + flameSprite / 2, 32)
+                    .addObjectDamageOverlay(this, level, tileX, tileY)
+                    .light(light)
+                    .pos(drawX, drawY));                                 // flame sits on the bottom tile
 
         } else if (rotation == 2) {
             // Rotation 2: only 1 sprite needed for this half
