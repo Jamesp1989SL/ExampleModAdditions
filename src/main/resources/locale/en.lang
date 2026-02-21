@@ -17,6 +17,8 @@ examplejobobject=Example Job Object
 exampleconfigobject=Example Config Object
 examplepressureplate=Example Pressure Plate
 examplewalltrap=Example Wall Trap
+examplecraftingstation=Example Crafting Station
+exampleworkstationduo=Example Workstation Duo
 
 [item]
 exampleitem=Example Item

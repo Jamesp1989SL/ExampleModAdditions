@@ -13,13 +13,14 @@ import necesse.level.gameObject.container.CraftingStationObject;
 import necesse.level.maps.Level;
 import necesse.level.maps.light.GameLight;
 
+//TODO figure out item art
+
 import java.util.List;
 
-//TODO add rendering code
 public class ExampleCraftingStationObject extends CraftingStationObject {
     // Loaded once from mod resources in loadTextures()
     private GameTexture texture;
-    
+
     public ExampleCraftingStationObject() {
         super();
         // Optional: set categories like vanilla crafting stations do
