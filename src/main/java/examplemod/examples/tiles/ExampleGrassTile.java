@@ -1,8 +1,5 @@
 package examplemod.examples.tiles;
 
-import java.awt.Color;
-import java.awt.Point;
-
 import necesse.engine.registries.ObjectRegistry;
 import necesse.engine.util.GameMath;
 import necesse.engine.util.GameRandom;
@@ -10,9 +7,12 @@ import necesse.gfx.gameTexture.GameTextureSection;
 import necesse.inventory.lootTable.LootTable;
 import necesse.inventory.lootTable.lootItem.ChanceLootItem;
 import necesse.level.gameObject.GameObject;
+import necesse.level.gameTile.GrassTile;
 import necesse.level.gameTile.TerrainSplatterTile;
 import necesse.level.maps.Level;
 import necesse.level.maps.regionSystem.SimulatePriorityList;
+
+import java.awt.*;
 
 /**
  * ExampleGrassTile
@@ -25,21 +25,25 @@ import necesse.level.maps.regionSystem.SimulatePriorityList;
 public class ExampleGrassTile extends TerrainSplatterTile {
 
     // How often the grass OBJECT should grow on this tile
-    public static double growChance = GameMath.getAverageSuccessRuns(7000.0D);
+    // Takes an average of 7000 seconds to grow a grass
+    public static double growChance = GameMath.getAverageSuccessRuns(7000);
 
     // How often this TILE should spread onto dirt next to it
-    public static double spreadChance = GameMath.getAverageSuccessRuns(850.0D);
+    // Takes an average of 850 seconds for this to spread to dirt
+    public static double spreadChance = GameMath.getAverageSuccessRuns(850);
 
     // Used only for picking a random sprite row (visual variation)
     private final GameRandom drawRandom = new GameRandom();
 
     public ExampleGrassTile() {
+        // isFloor parameter defines how some other systems interact with it
+        // For example if settlers are happy with it in their rooms
         // Texture file: resources/tiles/examplegrasstile.png
         super(false, "examplegrasstile");
 
-        this.mapColor = new Color(70, 120, 40); // minimap colour
-        this.canBeMined = true;                 // player can mine/remove it
-        this.isOrganic = true;                  // marks it as organic
+        this.mapColor = new Color(70, 120, 40); // Minimap color
+        this.canBeMined = true; // Player can mine/remove it
+        this.isOrganic = true; // Marks it as organic. Defines how some other systems interact with it
     }
 
     @Override
@@ -51,47 +55,23 @@ public class ExampleGrassTile extends TerrainSplatterTile {
     @Override
     public void addSimulateLogic(Level level, int x, int y, long ticks,
                                  SimulatePriorityList list, boolean sendChanges) {
-        // Off-screen simulation: schedule growth while the chunk is not actively ticking
-        addSimulateGrow(level, x, y, growChance, ticks, "examplegrass", list, sendChanges);
-    }
-
-    /**
-     * Off-screen growth: schedule placing the grass object after enough simulated time passes.
-     */
-    public static void addSimulateGrow(Level level, int tileX, int tileY, double chance, long ticks,
-                                       String growObjectID, SimulatePriorityList list, boolean sendChanges) {
-
-        // Only grow if there is no object on this tile
-        if (level.getObjectID(tileX, tileY) != 0) return;
-
-        // Convert the chance into a rough amount of time before it should succeed
-        double runs = Math.max(1.0D, GameMath.getRunsForSuccess(chance, GameRandom.globalRandom.nextDouble()));
-        long remainingTicks = (long) (ticks - runs);
-        if (remainingTicks <= 0L) return;
-
-        GameObject obj = ObjectRegistry.getObject(ObjectRegistry.getObjectID(growObjectID));
-
-        // canPlace == null means it's allowed to place here
-        if (obj.canPlace(level, tileX, tileY, 0, false) != null) return;
-
-        // Add a delayed task to place the object later
-        list.add(tileX, tileY, remainingTicks, () -> {
-            if (obj.canPlace(level, tileX, tileY, 0, false) == null) {
-                obj.placeObject(level, tileX, tileY, 0, false);
-                level.objectLayer.setIsPlayerPlaced(tileX, tileY, false); // natural growth
-                if (sendChanges) level.sendObjectUpdatePacket(tileX, tileY);
-            }
-        });
+        // This happens when a chunk is loaded with this tile that has not been loaded in a while
+        // GrassTile has a helper function for this that we can use:
+        GrassTile.addSimulateGrow(level, x, y, growChance, ticks, "examplegrass", list, sendChanges);
     }
 
     @Override
     public double spreadToDirtChance() {
         // Controls how fast dirt turns into this grass tile when nearby
+        // The actual logic is handled by the dirt tile itself
         return spreadChance;
     }
 
     @Override
     public void tick(Level level, int x, int y) {
+        // This happens about once a second. Note: This is not time synced between server and client
+        // Mostly used for random events and visual stuff like particles, etc.
+
         // Only the server should change the world
         if (!level.isServer()) return;
 
@@ -120,6 +100,7 @@ public class ExampleGrassTile extends TerrainSplatterTile {
     @Override
     public int getTerrainPriority() {
         // Used when tiles overlap/compete in drawing/spreading rules
-        return 100;
+        return TerrainSplatterTile.PRIORITY_TERRAIN;
     }
+
 }
