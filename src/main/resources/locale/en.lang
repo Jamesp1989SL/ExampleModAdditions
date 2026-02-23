@@ -41,6 +41,8 @@ exampleboots=Example Boots
 examplebosssummonitem=Example Boss Summon Item
 exampletrinket=Example Trinket
 
+[tech]
+exampletech=Example Crafting Station
 
 [itemtooltip]
 examplemagicstafftip=Shoots a homing, piercing projectile
