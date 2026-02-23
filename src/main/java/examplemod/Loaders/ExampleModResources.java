@@ -4,7 +4,6 @@ import examplemod.ExampleMod;
 import examplemod.examples.mobs.ExampleBossMob;
 import examplemod.examples.mobs.ExampleMob;
 import examplemod.examples.mobs.ExampleSummonWeaponMob;
-import necesse.engine.sound.SoundSettings;
 import necesse.engine.sound.gameSound.GameSound;
 import necesse.gfx.gameTexture.GameTexture;
 
@@ -21,13 +20,6 @@ public class ExampleModResources {
 
         //initializing the sound to be used by our boss mob
         ExampleMod.EXAMPLE_SOUND = GameSound.fromFile("examplesound");
-
-        // Optional settings (volume/pitch/falloff) – used when playing via SoundSettings
-        ExampleMod.EXAMPLE_SOUND_SETTINGS = new SoundSettings(ExampleMod.EXAMPLE_SOUND)
-                .volume(0.8f)
-                .basePitch(1.0f)
-                .pitchVariance(0.08f)
-                .fallOffDistance(900);
     }
 }
 
