@@ -27,6 +27,13 @@ public class ExampleObject extends GameObject {
         toolType = ToolType.ALL; // Can be broken by all tools
         isLightTransparent = true; // Lets light pass through
         mapColor = new Color(31, 150, 148); // Also applies as debris color if not set
+
+        // We set the category that this object should be part of
+        // You can see the registered category stringIDs in the ItemCategory class. Link:
+        /// {@link necesse.inventory.item.ItemCategory}
+        setItemCategory("objects", "columns");
+        // Same with crafting category (where they are displayed in the workstation)
+        setCraftingCategory("objects", "columns");
     }
 
     @Override

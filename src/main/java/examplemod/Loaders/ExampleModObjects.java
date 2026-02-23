@@ -4,7 +4,6 @@ import examplemod.examples.objects.*;
 import necesse.engine.registries.ObjectRegistry;
 import necesse.level.gameObject.WallObject;
 
-//NOTE item and crafting categories subject to change
 public class ExampleModObjects {
 
     // Expose IDs for other classes (biomes, levels, etc.)
@@ -14,9 +13,7 @@ public class ExampleModObjects {
     public static void load(){
         // Register our objects
 
-        ObjectRegistry.registerObject("exampleobject", new ExampleObject()
-                .setItemCategory(ExampleModCategories.ROOT_OBJECTS,ExampleModCategories.OBJECTS_COLUMNS)
-                .setCraftingCategory(ExampleModCategories.ROOT_OBJECTS,ExampleModCategories.OBJECTS_COLUMNS), 2, true);
+        ObjectRegistry.registerObject("exampleobject", new ExampleObject(), 2, true);
 
 
         // Register a rock object
@@ -36,9 +33,7 @@ public class ExampleModObjects {
         ObjectRegistry.registerObject("examplesapling", new ExampleTreeSaplingObject(),10,true);
 
         // Register a furnature object this won't currently display in creative due to how creative is coded but this is subject to change
-        ObjectRegistry.registerObject("examplechair", new ExampleWoodChairObject()
-                .setItemCategory(ExampleModCategories.MOD,ExampleModCategories.MOD_OBJECTS,ExampleModCategories.EXAMPLEWOOD)
-                .setCraftingCategory(ExampleModCategories.MOD,ExampleModCategories.MOD_OBJECTS,ExampleModCategories.EXAMPLEWOOD),50,true);
+        ObjectRegistry.registerObject("examplechair", new ExampleWoodChairObject(),50,true);
 
         // Register a grass object
         ObjectRegistry.registerObject("examplegrass",new ExampleGrassObject(),1,true);
