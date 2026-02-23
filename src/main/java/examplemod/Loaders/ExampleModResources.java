@@ -8,7 +8,8 @@ import necesse.engine.sound.gameSound.GameSound;
 import necesse.gfx.gameTexture.GameTexture;
 
 public class ExampleModResources {
-    public static void load(){
+
+    public static void load() {
         // Sometimes your textures will have a black or other outline unintended under rotation or scaling
         // This is caused by alpha blending between transparent pixels and the edge
         // To fix this, run the preAntialiasTextures gradle task
@@ -21,5 +22,6 @@ public class ExampleModResources {
         //initializing the sound to be used by our boss mob
         ExampleMod.EXAMPLE_SOUND = GameSound.fromFile("examplesound");
     }
+
 }
 

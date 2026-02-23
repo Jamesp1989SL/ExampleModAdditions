@@ -8,13 +8,13 @@ import necesse.engine.util.LevelIdentifier;
 
 public class ExampleModJournal {
 
-    public static void load(){
+    public static void load() {
         // Surface
         JournalEntry exampleBiomeJournalSurface = JournalRegistry.registerJournalEntry(
                 "examplebiomesurface",
                 new JournalEntry(ExampleMod.EXAMPLE_BIOME, LevelIdentifier.SURFACE_IDENTIFIER)
         );
-        //content lists inside the journal page
+        // Content lists inside the journal page
         exampleBiomeJournalSurface.addBiomeLootEntry("examplelog");
         exampleBiomeJournalSurface.addMobEntries("examplemob");
 
@@ -23,7 +23,7 @@ public class ExampleModJournal {
                 "examplebiomecave",
                 new JournalEntry(ExampleMod.EXAMPLE_BIOME, LevelIdentifier.CAVE_IDENTIFIER)
         );
-        //content lists inside the journal page
+        // Content lists inside the journal page
         exampleBiomeJournalCave.addBiomeLootEntry("exampleore","examplestone");
         exampleBiomeJournalCave.addMobEntries("examplemob");
 
@@ -32,7 +32,7 @@ public class ExampleModJournal {
                 "examplebiomedeepcave",
                 new JournalEntry(ExampleMod.EXAMPLE_BIOME, LevelIdentifier.DEEP_CAVE_IDENTIFIER)
         );
-        //content lists inside the journal page
+        // Content lists inside the journal page
         exampleBiomeJournalDeepCave.addBiomeLootEntry("exampleore","examplestone");
         exampleBiomeJournalDeepCave.addMobEntries("examplemob");
     }

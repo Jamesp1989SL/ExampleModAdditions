@@ -3,8 +3,7 @@ package examplemod.Loaders;
 import necesse.engine.localization.message.LocalMessage;
 import necesse.inventory.item.ItemCategory;
 
-public final class ExampleModCategories {
-    private ExampleModCategories() {}
+public class ExampleModCategories {
 
     /*
      * IMPORTANT (Creative Menu requirement)

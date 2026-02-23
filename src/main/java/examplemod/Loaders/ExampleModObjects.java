@@ -10,7 +10,7 @@ public class ExampleModObjects {
     public static int EXAMPLE_BASE_ROCK_ID = -1;
     public static int EXAMPLE_ORE_ROCK_ID  = -1;
 
-    public static void load(){
+    public static void load() {
         // Register our objects
 
         ObjectRegistry.registerObject("exampleobject", new ExampleObject(), 2, true);
@@ -62,7 +62,6 @@ public class ExampleModObjects {
 
         // Register Workstation Duo
         ExampleWorkstationDuoObject.register();
-
-
     }
+
 }

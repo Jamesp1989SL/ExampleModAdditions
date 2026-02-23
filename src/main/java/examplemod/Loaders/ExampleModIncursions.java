@@ -6,6 +6,7 @@ import necesse.engine.registries.IncursionBiomeRegistry;
 import necesse.engine.registries.LevelRegistry;
 
 public class ExampleModIncursions {
+
     public static void load() {
 
         // Register the incursion biome with tier requirement 1.
@@ -14,4 +15,5 @@ public class ExampleModIncursions {
         // Register the level class used for the incursion.
         LevelRegistry.registerLevel("exampleincursionlevel", ExampleIncursionLevel.class);
     }
+
 }

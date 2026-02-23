@@ -8,7 +8,7 @@ import necesse.entity.mobs.job.JobType;
 
 public class ExampleModJobs {
 
-    public static void load(){
+    public static void load() {
         // 1) Register the job type
         JobTypeRegistry.registerType("examplejobtype",
                 new JobType(

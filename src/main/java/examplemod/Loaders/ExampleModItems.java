@@ -8,16 +8,16 @@ import examplemod.examples.items.consumable.ExampleBossSummonItem;
 import examplemod.examples.items.consumable.ExampleFoodItem;
 import examplemod.examples.items.consumable.ExamplePotionItem;
 import examplemod.examples.items.materials.*;
-import examplemod.examples.items.tools.ExampleStaffMagicWeapon;
-import examplemod.examples.items.tools.ExampleSwordMeleeWeapon;
 import examplemod.examples.items.tools.ExampleBowRangedWeapon;
 import examplemod.examples.items.tools.ExampleOrbSummonWeapon;
+import examplemod.examples.items.tools.ExampleStaffMagicWeapon;
+import examplemod.examples.items.tools.ExampleSwordMeleeWeapon;
 import examplemod.examples.items.trinkets.ExampleTrinketItem;
 import necesse.engine.registries.ItemRegistry;
 
 public class ExampleModItems {
-    public static void load(){
 
+    public static void load() {
         // Materials
         ItemRegistry.registerItem("exampleitem", new ExampleMaterialItem(), 10, true);
         ItemRegistry.registerItem("examplestone", new ExampleStoneItem(), 15, true);
@@ -49,4 +49,5 @@ public class ExampleModItems {
         // Trinkets
         ItemRegistry.registerItem("exampletrinket",new ExampleTrinketItem(),1,true);
     }
+
 }

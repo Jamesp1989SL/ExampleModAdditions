@@ -8,6 +8,7 @@ import necesse.engine.network.server.ServerClient;
 import necesse.engine.registries.LevelEventRegistry;
 
 public class ExampleModEvents {
+
     public static void load() {
         // Register our Level Event to the registry
         LevelEventRegistry.registerEvent("examplelevelevent", ExampleLevelEvent.class);
@@ -25,8 +26,8 @@ public class ExampleModEvents {
                 }
             }
         });
-
     }
+
 }
 
 

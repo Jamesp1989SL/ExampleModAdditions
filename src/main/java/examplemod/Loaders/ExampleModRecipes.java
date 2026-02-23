@@ -5,9 +5,9 @@ import necesse.inventory.recipe.Ingredient;
 import necesse.inventory.recipe.Recipe;
 import necesse.inventory.recipe.Recipes;
 
-/*
-here is where we will register our recipes into the game.
- there is potentially quite a few of them so this will allow us to maintain cleaner code
+/**
+ * Here is where we will register our recipes into the game.
+ * There is potentially quite a few of them so this will allow us to maintain cleaner code
 */
 public class ExampleModRecipes {
 

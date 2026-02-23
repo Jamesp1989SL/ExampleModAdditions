@@ -17,4 +17,5 @@ public class ExampleModPackets {
         // Register our packet to read config from an object
         PacketRegistry.registerPacket(ExampleConfigInteractPacket.class);
     }
+
 }
