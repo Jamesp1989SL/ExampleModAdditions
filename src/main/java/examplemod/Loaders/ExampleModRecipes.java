@@ -25,7 +25,7 @@ public class ExampleModRecipes {
         ).showAfter("woodboat")); // Show recipe after wood boat recipe
 
 
-        //FORGE RECIPES
+        // FORGE RECIPES
         Recipes.registerModRecipe(new Recipe(
                 "examplebar",
                 1,
@@ -35,7 +35,7 @@ public class ExampleModRecipes {
                 })
         );
 
-        //IRON ANVIL RECIPES
+        // IRON ANVIL RECIPES
         Recipes.registerModRecipe(new Recipe(
                 "examplemeleesword",
                 1,
@@ -63,6 +63,17 @@ public class ExampleModRecipes {
                 new Ingredient[]{
                         new Ingredient("exampleitem", 3),
                         new Ingredient("examplebar", 2)
+                }
+        ));
+
+        Recipes.registerModRecipe(new Recipe(
+                "examplerangedbow",
+                1,
+                RecipeTechRegistry.IRON_ANVIL,
+                new Ingredient[]{
+                        new Ingredient("examplelog", 8),
+                        new Ingredient("examplebar", 2),
+                        new Ingredient("exampleitem", 2)
                 }
         ));
 
@@ -96,7 +107,7 @@ public class ExampleModRecipes {
                 }
         ));
 
-        //WORKSTATION RECIPES
+        // WORKSTATION RECIPES
         Recipes.registerModRecipe(new Recipe(
                 "examplewall",
                 1,
@@ -116,16 +127,49 @@ public class ExampleModRecipes {
         ));
 
         Recipes.registerModRecipe(new Recipe(
-                "exampleobject",
-                1,
+                "examplearrow",
+                25, // output amount
                 RecipeTechRegistry.WORKSTATION,
                 new Ingredient[]{
-                        new Ingredient("examplestone", 7),
-                        new Ingredient("exampleitem", 3)
+                        new Ingredient("examplelog", 1),
+                        new Ingredient("exampleitem", 1)
                 }
         ));
 
-        //COOKING POT RECIPES
+        Recipes.registerModRecipe(new Recipe(
+                "examplepressureplate",
+                1,
+                RecipeTechRegistry.WORKSTATION,
+                new Ingredient[]{
+                        new Ingredient("examplestone", 6),
+                        new Ingredient("examplebar", 1)
+                }
+        ));
+
+        Recipes.registerModRecipe(new Recipe(
+                "examplecraftingstation",
+                1,
+                RecipeTechRegistry.WORKSTATION,
+                new Ingredient[]{
+                        new Ingredient("examplelog", 12),
+                        new Ingredient("examplestone", 12),
+                        new Ingredient("examplebar", 4)
+                }
+        ));
+
+        Recipes.registerModRecipe(new Recipe(
+                "exampleworkstationduo",
+                1,
+                RecipeTechRegistry.WORKSTATION,
+                new Ingredient[]{
+                        new Ingredient("examplelog", 20),
+                        new Ingredient("examplebar", 8)
+                }
+        ));
+
+
+
+        // COOKING POT RECIPES
         Recipes.registerModRecipe(new Recipe(
                 "examplefood",
                 1,
@@ -137,7 +181,7 @@ public class ExampleModRecipes {
                 }
         ));
 
-        //ALCHEMY RECIPES
+        // ALCHEMY RECIPES
         Recipes.registerModRecipe(new Recipe(
                 "examplepotion",
                 1,
@@ -147,7 +191,7 @@ public class ExampleModRecipes {
                 }
         ));
 
-        //LANDSCAPING RECIPES
+        // LANDSCAPING RECIPES
         Recipes.registerModRecipe(new Recipe(
                 "examplebaserock",
                 1,
@@ -160,20 +204,61 @@ public class ExampleModRecipes {
         Recipes.registerModRecipe(new Recipe(
                 "exampleorerock",
                 1,
-                RecipeTechRegistry.LANDSCAPING,
+                RecipeTechRegistry.ADVANCED_WORKSTATION,
                 new Ingredient[]{
                         new Ingredient("examplestone", 5),
                         new Ingredient("exampleore", 5),
                 }
         ));
 
-        //CARPENTER RECIPES
+        // CARPENTER RECIPES
         Recipes.registerModRecipe(new Recipe(
                 "examplechair",
                 1,
                 RecipeTechRegistry.CARPENTER,
                 new Ingredient[]{
                         new Ingredient("examplelog", 5),
+                }
+        ));
+
+        // EXAMPLE TECH RECIPES
+        Recipes.registerModRecipe(new Recipe(
+                "exampleconfigobject",
+                1,
+                ExampleModTech.EXAMPLE_TECH,
+                new Ingredient[]{
+                        new Ingredient("examplestone", 4),
+                        new Ingredient("exampleitem", 1)
+                }
+        ));
+
+        Recipes.registerModRecipe(new Recipe(
+                "examplejobobject",
+                1,
+                ExampleModTech.EXAMPLE_TECH,
+                new Ingredient[]{
+                        new Ingredient("examplestone", 4),
+                        new Ingredient("exampleitem", 1)
+                }
+        ));
+
+        Recipes.registerModRecipe(new Recipe(
+                "exampleleveleventobject",
+                1,
+                ExampleModTech.EXAMPLE_TECH,
+                new Ingredient[]{
+                        new Ingredient("examplestone", 4),
+                        new Ingredient("exampleitem", 1)
+                }
+        ));
+
+        Recipes.registerModRecipe(new Recipe(
+                "exampleobject",
+                1,
+                ExampleModTech.EXAMPLE_TECH,
+                new Ingredient[]{
+                        new Ingredient("examplestone", 7),
+                        new Ingredient("exampleitem", 3)
                 }
         ));
 

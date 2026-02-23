@@ -5,7 +5,6 @@ import examplemod.examples.maps.biomes.ExampleBiome;
 import necesse.engine.modLoader.annotations.ModEntry;
 import necesse.engine.sound.SoundSettings;
 import necesse.engine.sound.gameSound.GameSound;
-import necesse.level.maps.biomes.Biome;
 
 @ModEntry
 public class ExampleMod {
@@ -26,6 +25,9 @@ public class ExampleMod {
     public void init() {
         System.out.println("Hello world from my example mod!");
         settings.logLoadedSettings(); // log the loaded settings for debug
+
+        // Register Tech Trees
+        ExampleModTech.load();
 
         // Register categories first: Used by Items/Objects to appear correctly in Creative/crafting trees
         ExampleModCategories.load();
@@ -66,11 +68,6 @@ public class ExampleMod {
         // load our recipes from the ExampleRecipes class so we can keep this class easy to read
         ExampleModRecipes.registerRecipes();
 
-
-        // Add our example mob to default cave mobs.
-        // Spawn tables use a ticket/weight system. In general, common mobs have about 100 tickets.
-        Biome.defaultCaveMobs
-                .add(100, "examplemob");
     }
 
 }

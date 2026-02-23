@@ -62,6 +62,11 @@ public class ExampleModObjects {
         WallObject exampleWall = (WallObject) ObjectRegistry.getObject("examplewall");
         ObjectRegistry.registerObject("examplewalltrap",new ExampleWallTrapObject(exampleWall),1,true);
 
+        // Register a Crafting Station
+        ObjectRegistry.registerObject("examplecraftingstation", new ExampleCraftingStationObject(),1,true);
+
+        // Register Workstation Duo
+        ExampleWorkstationDuoObject.register();
 
 
     }
