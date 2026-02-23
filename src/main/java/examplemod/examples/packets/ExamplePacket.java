@@ -27,6 +27,7 @@ public class ExamplePacket extends Packet {
         someContent = reader.getNextContentPacket();
     }
 
+    // Used to construct the packet to be sent from the server
     public ExamplePacket(ServerClient client, int someInteger, boolean someBoolean, String someString, Packet someContent) {
         this.playerSlot = client.slot;
         this.someInteger = someInteger;
@@ -51,6 +52,14 @@ public class ExamplePacket extends Packet {
     public void processClient(NetworkPacket packet, Client client) {
         // Do some stuff with the packet
     }
+
+    // You can also override processServer if you want the packet to be processed on the server when received
+    // from a client, but for this example we'll just have it processed on the client
+//    @Override
+//    public void processServer(NetworkPacket packet, Server server, ServerClient client) {
+//        super.processServer(packet, server, client);
+//    }
+
 }
 
 

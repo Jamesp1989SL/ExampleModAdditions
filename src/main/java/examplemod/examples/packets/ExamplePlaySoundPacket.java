@@ -15,25 +15,27 @@ import necesse.engine.sound.SoundSettings;
 
 public class ExamplePlaySoundPacket extends Packet {
 
-    public final float x;
-    public final float y;
+    public final float levelX;
+    public final float levelY;
 
-    // Decode (CLIENT receiving)
+    // MUST HAVE - Used for construction in registry
     public ExamplePlaySoundPacket(byte[] data) {
         super(data);
-        PacketReader r = new PacketReader(this);
-        x = r.getNextFloat();
-        y = r.getNextFloat();
+        PacketReader reader = new PacketReader(this);
+        // Important that it's same order as written in
+        levelX = reader.getNextFloat();
+        levelY = reader.getNextFloat();
     }
 
-    // Encode (SERVER sending)
-    public ExamplePlaySoundPacket(float x, float y) {
-        this.x = x;
-        this.y = y;
+    // Used to construct the packet on the server to then send to desired clients
+    public ExamplePlaySoundPacket(float levelX, float levelY) {
+        this.levelX = levelX;
+        this.levelY = levelY;
 
-        PacketWriter w = new PacketWriter(this);
-        w.putNextFloat(x);
-        w.putNextFloat(y);
+        PacketWriter writer = new PacketWriter(this);
+        // Important that it's same order as read in
+        writer.putNextFloat(levelX);
+        writer.putNextFloat(levelY);
     }
 
     // Runs ONLY on client
@@ -48,7 +50,7 @@ public class ExamplePlaySoundPacket extends Packet {
                 .fallOffDistance(900);
 
         // Finally, play the sound at the position received from the packet
-        soundSettings.play(x, y);
+        soundSettings.play(levelX, levelY);
     }
 
 }

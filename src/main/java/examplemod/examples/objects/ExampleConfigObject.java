@@ -1,7 +1,9 @@
 package examplemod.examples.objects;
 
-import examplemod.examples.packets.ExampleConfigInteractPacket;
+import examplemod.ExampleMod;
+import necesse.engine.Settings;
 import necesse.engine.gameLoop.tickManager.TickManager;
+import necesse.engine.network.server.ServerClient;
 import necesse.entity.mobs.PlayerMob;
 import necesse.gfx.camera.GameCamera;
 import necesse.gfx.drawOptions.texture.TextureDrawOptionsEnd;
@@ -12,10 +14,11 @@ import necesse.level.gameObject.GameObject;
 import necesse.level.maps.Level;
 import necesse.level.maps.light.GameLight;
 
-import java.awt.Rectangle;
+import java.awt.*;
 import java.util.List;
 
 public class ExampleConfigObject extends GameObject {
+
     // Loaded once from mod resources in loadTextures()
     private GameTexture texture;
 
@@ -30,7 +33,7 @@ public class ExampleConfigObject extends GameObject {
 
         // Loads: src/main/resources/objects/exampleleveleventobject.png
         // (no ".png" in the string)
-        this.texture = GameTexture.fromFile("objects/exampleconfigobject");
+        texture = GameTexture.fromFile("objects/exampleconfigobject");
     }
 
     @Override
@@ -46,13 +49,11 @@ public class ExampleConfigObject extends GameObject {
         int drawY = camera.getTileDrawY(tileY);
 
         // Build draw options once (sprite + lighting + position)
-        final TextureDrawOptionsEnd opts = this.texture.initDraw()
-                .sprite(0, 0, 32)     // sprite index (0,0), size 32
+        TextureDrawOptionsEnd opts = texture.initDraw()
+                .sprite(0, 0, 32) // sprite index (0,0), size 32
                 .light(light)
                 .pos(drawX, drawY);
 
-        /*
-         */
         tileList.add(tm -> opts.draw());
     }
 
@@ -65,7 +66,7 @@ public class ExampleConfigObject extends GameObject {
         int drawX = camera.getTileDrawX(tileX);
         int drawY = camera.getTileDrawY(tileY);
 
-        this.texture.initDraw()
+        texture.initDraw()
                 .sprite(0, 0, 32)
                 .light(light)
                 .alpha(alpha)
@@ -79,8 +80,28 @@ public class ExampleConfigObject extends GameObject {
 
     @Override
     public void interact(Level level, int x, int y, PlayerMob player) {
-        if (level.isClient() && level.getClient() != null) {
-            level.getClient().network.sendPacket(new ExampleConfigInteractPacket(x, y));
+        // This interact method will run both on the server and the client. In this case we only want something
+        // to happen when runs on the server, so we do this if check.
+
+        // In general, when the player does an action you want to verify that it's a valid action on the server.
+        // The base game already do this in the case of the interact method. All the client does is send a packet
+        // that they want to interact with this object. Then the server checks if the object actually exists,
+        // if they're in range etc. You can see this happens in the PacketObjectInteract class.
+        // And the server then runs the effect that happens when a client interacted with this object
+        if (player.isServerClient()) {
+            // Increment server settings value
+            ExampleMod.SETTINGS.exampleInt += 1;
+
+            // Save server settings back to disk (server.cfg + cfg/mods/<modid>.cfg)
+            Settings.saveServerSettings();
+
+            // Send the message to the client that sent the packet about the settings
+            ServerClient client = player.getServerClient();
+            client.sendChatMessage("[ExampleMod] Server config updated (saved):");
+            client.sendChatMessage("exampleBoolean: " + ExampleMod.SETTINGS.exampleBoolean);
+            client.sendChatMessage("exampleInt: " + ExampleMod.SETTINGS.exampleInt);
+            client.sendChatMessage("exampleString: " + ExampleMod.SETTINGS.exampleString);
         }
     }
+
 }
