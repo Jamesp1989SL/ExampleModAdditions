@@ -8,14 +8,22 @@ import necesse.level.maps.Level;
 public class ExampleGrassObject extends GrassObject {
 
     public ExampleGrassObject() {
-        // "examplegrass" is the texture name, 2 = variants/height setting used by GrassObject
+        // "examplegrass" is the texture name
+        // 2 = max density (how many adjacent grass objects can be next to each other before they stop growing)
         super("examplegrass", 2);
     }
 
-    public LootTable getLootTable(Level level, int tileX, int tileY) {
-        // 4% chance, tweak to match vanilla feel
-        return new LootTable(
-                new ChanceLootItem(0.04F, "examplegrassseed")
-        );
+    @Override
+    public LootTable getLootTable(Level level, int layerID, int tileX, int tileY) {
+        if (level.objectLayer.isPlayerPlaced(tileX, tileY)) {
+            // If the grass is player placed (like from the landscaping station), it should just drop the grass itself
+            return super.getLootTable(level, layerID, tileX, tileY);
+        } else {
+            // Else 4% chance to drop an example grass seed
+            return new LootTable(
+                    new ChanceLootItem(0.04f, "examplegrassseed")
+            );
+        }
     }
+
 }

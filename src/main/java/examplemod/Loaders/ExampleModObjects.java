@@ -2,7 +2,10 @@ package examplemod.Loaders;
 
 import examplemod.examples.objects.*;
 import necesse.engine.registries.ObjectRegistry;
+import necesse.inventory.item.toolItem.ToolType;
 import necesse.level.gameObject.WallObject;
+
+import java.awt.*;
 
 public class ExampleModObjects {
 
@@ -18,21 +21,34 @@ public class ExampleModObjects {
 
         // Register a rock object
         ExampleBaseRockObject exampleBaseRock = new ExampleBaseRockObject();
-        EXAMPLE_BASE_ROCK_ID = ObjectRegistry.registerObject("examplebaserock", exampleBaseRock, -1.0F, true);
+        // If you give a negative value as broker value, the game will calculate the broker value based on the recipe for this item's ingredients
+        // -1 will be 1*ingredient cost, -2 will be 2 * ingredient cost, etc.
+        EXAMPLE_BASE_ROCK_ID = ObjectRegistry.registerObject("examplebaserock", exampleBaseRock, -1f, true);
 
         // Register an ore rock object that overlays onto our incursion rock
-        EXAMPLE_ORE_ROCK_ID = ObjectRegistry.registerObject("exampleorerock", new ExampleOreRockObject(exampleBaseRock), -1.0F, true);
+        EXAMPLE_ORE_ROCK_ID = ObjectRegistry.registerObject("exampleorerock", new ExampleOreRockObject(exampleBaseRock), -1f, true);
 
         // Register a wall object, window object and door object
-        ExampleWallWindowDoorObject.registerWallsDoorsWindows();
+        WallObject.registerWallObjects(
+                "example", // Prefix used for stringIDs
+                "examplewall", // Texture name
+                0, // Tool tier
+                new Color(255, 220, 80), // Map color
+                ToolType.PICKAXE, // Tool type used to mine it
+                -1f,  // Wall broker value
+                -1f, // Door broker value
+                true // Obtainable
+        );
+        // If you need the ids, registerWallObjects will return an array with the wall, door, door open and window ids
+        // in that order. You can also fetch them later with ObjectRegistry.getID("examplewall"), etc.
 
         // Register a tree object
-        ObjectRegistry.registerObject("exampletree",new ExampleTreeObject(),0.0F,false,false,false);
+        ObjectRegistry.registerObject("exampletree",new ExampleTreeObject(),0,false,false,true);
 
         // Register a sapling object
         ObjectRegistry.registerObject("examplesapling", new ExampleTreeSaplingObject(),10,true);
 
-        // Register a furnature object this won't currently display in creative due to how creative is coded but this is subject to change
+        // Register a furniture object this won't currently display in creative due to how creative is coded but this is subject to change
         ObjectRegistry.registerObject("examplechair", new ExampleWoodChairObject(),50,true);
 
         // Register a grass object
