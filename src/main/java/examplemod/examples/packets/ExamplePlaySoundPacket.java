@@ -38,8 +38,8 @@ public class ExamplePlaySoundPacket extends Packet {
     // Runs ONLY on client
     @Override
     public void processClient(NetworkPacket packet, Client client) {
-        if (ExampleMod.EXAMPLESOUNDSETTINGS != null) {
-            ExampleMod.EXAMPLESOUNDSETTINGS.play(SoundEffect.effect(x, y));
+        if (ExampleMod.EXAMPLE_SOUND_SETTINGS != null) {
+            ExampleMod.EXAMPLE_SOUND_SETTINGS.play(SoundEffect.effect(x, y));
         }
     }
 }
