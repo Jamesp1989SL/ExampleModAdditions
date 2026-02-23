@@ -31,8 +31,8 @@ public class ExampleConfigObject extends GameObject {
     public void loadTextures() {
         super.loadTextures();
 
-        // Loads: src/main/resources/objects/exampleleveleventobject.png
-        // (no ".png" in the string)
+        // Loads the texture file from "src/main/resources/objects/exampleconfigobject.png"
+        // You don't need the .png extension when loading textures
         texture = GameTexture.fromFile("objects/exampleconfigobject");
     }
 
