@@ -25,6 +25,9 @@ public class ExampleMod {
         System.out.println("Hello world from my example mod!");
         SETTINGS.logLoadedSettings(); // log the loaded settings for debug
 
+        // Note: If you're using Intellij IDEA, you can ctrl+click the different references
+        // like "load()" to jump to their code and see how they work!
+
         // Register Tech Trees
         ExampleModTech.load();
 
