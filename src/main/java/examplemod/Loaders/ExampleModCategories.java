@@ -60,6 +60,9 @@ public final class ExampleModCategories {
                 "examplemod", "objects", "examplewood"
         );
 
-        // In
+        // How the sorting string work:
+        // The string is divided up between the hyphens (-). Then each section is alphabetically compared to the
+        // other categories corresponding section. This makes it so it's always possible to insert a category in
+        // between two existing categories no matter what sorting string they have.
     }
 }
