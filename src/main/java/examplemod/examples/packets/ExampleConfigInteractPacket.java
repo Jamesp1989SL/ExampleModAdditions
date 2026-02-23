@@ -35,21 +35,21 @@ public class ExampleConfigInteractPacket extends Packet {
 
     @Override
     public void processServer(NetworkPacket packet, Server server, ServerClient client) {
-        if (ExampleMod.settings == null) {
+        if (ExampleMod.SETTINGS == null) {
             client.sendChatMessage("[ExampleMod] Settings missing on server.");
             return;
         }
 
         // 1) Increment server  value
-        ExampleMod.settings.exampleInt += 1;
+        ExampleMod.SETTINGS.exampleInt += 1;
 
         // 2) Save server config back to disk (server.cfg + cfg/mods/<modid>.cfg)
         Settings.saveServerSettings();
 
         // 3) Display AFTER increment+save
-        boolean enabled = ExampleMod.settings.exampleBoolean;
-        int amount = ExampleMod.settings.exampleInt;
-        String msg = ExampleMod.settings.exampleString;
+        boolean enabled = ExampleMod.SETTINGS.exampleBoolean;
+        int amount = ExampleMod.SETTINGS.exampleInt;
+        String msg = ExampleMod.SETTINGS.exampleString;
 
         client.sendChatMessage("[ExampleMod] Server config updated (saved):");
         client.sendChatMessage("exampleBoolean: " + enabled);

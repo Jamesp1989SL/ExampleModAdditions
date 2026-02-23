@@ -9,7 +9,7 @@ import necesse.engine.sound.gameSound.GameSound;
 public class ExampleMod {
 
     // Global access point for mod settings
-    public static ExampleModSettings settings;
+    public static ExampleModSettings SETTINGS;
 
     // We define our static registered objects here, so they can be referenced elsewhere
     public static ExampleBiome EXAMPLE_BIOME;
@@ -17,13 +17,13 @@ public class ExampleMod {
 
     // Load settings for the example mod from the external file defined in ExampleModSettings
     public ExampleModSettings initSettings() {
-        settings = new ExampleModSettings();
-        return settings;
+        SETTINGS = new ExampleModSettings();
+        return SETTINGS;
     }
 
     public void init() {
         System.out.println("Hello world from my example mod!");
-        settings.logLoadedSettings(); // log the loaded settings for debug
+        SETTINGS.logLoadedSettings(); // log the loaded settings for debug
 
         // Register Tech Trees
         ExampleModTech.load();
