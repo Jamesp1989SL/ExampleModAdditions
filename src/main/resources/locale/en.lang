@@ -1,2 +1,8 @@
-[object]
-tombstoneondeath_tombstone=Tombstone
+[item]
+cloaktrinket=Cloak Trinket
+
+[itemtooltip]
+cloaktip=Press the Spacebar to hide till you hit an enemy. 500% damage bonus
+
+[buff]
+cloakcooldown=Cloak Cooldown
