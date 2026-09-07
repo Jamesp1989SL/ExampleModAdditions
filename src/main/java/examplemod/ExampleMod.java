@@ -52,6 +52,9 @@ public class ExampleMod {
         // Events after everything is registered: Lets event listeners safely reference IDs and content without ordering surprises.
         ExampleModEvents.load();
 
+        // Our chat commands
+        ExampleModCommands.load();
+
         // Journal last: JournalEntry.addMobEntries() resolves MobRegistry immediately at registration time.
         ExampleModJournal.load();
     }
