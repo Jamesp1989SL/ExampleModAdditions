@@ -84,7 +84,7 @@ public class ExampleBossSummonItem extends ConsumableItem {
         }
 
         // Only allow our ExampleBiome
-        if (level.getBiome(tileX, tileY) instanceof ExampleBiome) {
+        if (!(level.getBiome(tileX, tileY) instanceof ExampleBiome)) {
             return "notexamplebiome";
         }
 
