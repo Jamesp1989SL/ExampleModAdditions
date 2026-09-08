@@ -22,41 +22,39 @@ public class ExampleMod {
         // Note: If you're using Intellij IDEA, you can ctrl+click the different references
         // like "load()" to jump to their code and see how they work!
 
-        // Register Tech Trees
+        // The order which you register your content is important. Before registering any
+        // objects, items, etc. you want to register anything that might use that. In our case,
+        // we register our item categories, recipe tech and packets first. If we had custom
+        // global ingredients, we would also register them here
         ExampleModTech.load();
-
-        // Register categories first: Used by Items/Objects to appear correctly in Creative/crafting trees
         ExampleModCategories.load();
-
-        // Register packets early: Anything networked (mobs, settlers, job UIs, events) can safely reference packet IDs
         ExampleModPackets.load();
 
-        // Core content building blocks first: Tiles/Objects/Items are referenced by biomes, incursions, mobs, projectiles, buffs, etc.
+        // Next we register all our content:
+        // Our tiles, objects and items in that order
         ExampleModTiles.load();
         ExampleModObjects.load();
         ExampleModItems.load();
 
-        // Combat + entity registries next: Projectiles and buffs often reference items/mobs, and mobs can reference buffs/projectiles.
+        // Our biomes/level
+        ExampleModBiomes.load();
+        ExampleModIncursions.load();
+
+        // Now any entities and content the entities use after
         ExampleModProjectiles.load();
         ExampleModBuffs.load();
         ExampleModMobs.load();
 
-        // Settlement systems after mobs/items exist: Settlers are mobs; jobs can reference settlers, items, and packets/UI.
-        ExampleModSettlers.load();
-        ExampleModJobs.load();
+        // Content that our entities use
+        ExampleModSettlers.load(); // Settlers
+        ExampleModJobs.load(); // Jobs
+        ExampleModEvents.load(); // Level events, etc.
 
-        // World generation last-ish: Biomes/incursions can safely reference all registered tiles/objects/mobs/items now.
-        ExampleModBiomes.load();
-        ExampleModIncursions.load();
-
-        // Events after everything is registered: Lets event listeners safely reference IDs and content without ordering surprises.
-        ExampleModEvents.load();
-
-        // Our chat commands
-        ExampleModCommands.load();
-
-        // Journal last: JournalEntry.addMobEntries() resolves MobRegistry immediately at registration time.
+        // Lastly, anything that uses our content, entities, etc. Like our adventure journal entries
         ExampleModJournal.load();
+
+        // And anything remaining, like our chat commands
+        ExampleModCommands.load();
     }
 
     public void initResources() {
